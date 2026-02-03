@@ -47,7 +47,7 @@
 <!-- End Navbar -->
 <main class="main-content mt-0">
     <div class="page-header align-items-start min-height-300 m-3 border-radius-xl"
-              style="background-image: url('https://bengalurutechsummit.com/login_banner.jpg')">
+              style="background-image: url('')">
              <span class="mask bg-gradient-dark opacity-6"></span>
          </div>
     @yield('content')

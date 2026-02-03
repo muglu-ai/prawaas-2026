@@ -605,13 +605,14 @@
                 </a>
             </li>
             --}}
-            {{-- ELEVATE Registrations --}}
+            {{-- ELEVATE Registrations 
             <li class="nav-item">
                 <a href="{{ route('admin.elevate-registrations.index') }}" class="nav-link text-dark" data-tooltip="ELEVATE Registrations">
                     <i class="fa-solid fa-star"></i>
                     <span class="nav-link-text ms-1 ps-1 text-dark">ELEVATE Registrations</span>
                 </a>
             </li>
+            --}}
             @if ($subRole === 'visitor')
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#visitorsSubRole" class="nav-link text-dark"
