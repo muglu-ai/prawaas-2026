@@ -121,28 +121,6 @@
                 </div>
             </div>
             @endif
-
-            <hr class="my-4">
-
-            <div class="row">
-                <div class="col-12">
-                    <h6 class="text-muted mb-3">Technical Information</h6>
-                    <table class="table table-sm table-borderless">
-                        <tr>
-                            <th width="20%">Source URL:</th>
-                            <td><small class="text-muted">{{ $rsvp->source_url ?? 'N/A' }}</small></td>
-                        </tr>
-                        <tr>
-                            <th>IP Address:</th>
-                            <td><small class="text-muted">{{ $rsvp->ip_address ?? 'N/A' }}</small></td>
-                        </tr>
-                        <tr>
-                            <th>User Agent:</th>
-                            <td><small class="text-muted">{{ Str::limit($rsvp->user_agent, 100) ?? 'N/A' }}</small></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
         </div>
         <div class="card-footer">
             <form action="{{ route('admin.rsvps.destroy', $rsvp->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this RSVP?');">

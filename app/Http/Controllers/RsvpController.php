@@ -297,7 +297,7 @@ class RsvpController extends Controller
      */
     public function previewEmail($id)
     {
-        $rsvp = Rsvp::with(['event', 'association'])->findOrFail($id);
+        $rsvp = Rsvp::with(['event'])->findOrFail($id);
         $mailable = new RsvpConfirmationMail($rsvp);
 
         return $mailable->render();
@@ -308,7 +308,7 @@ class RsvpController extends Controller
      */
     public function resendEmail(Request $request, $id)
     {
-        $rsvp = Rsvp::with(['event', 'association'])->findOrFail($id);
+        $rsvp = Rsvp::with(['event'])->findOrFail($id);
 
         try {
             Mail::to($rsvp->email)->send(new RsvpConfirmationMail($rsvp));
