@@ -24,7 +24,7 @@
                                 Dear {{ $rsvp->name }},
                             </p>
                             <p style="margin: 0 0 20px; font-size: 16px; color: #333333; line-height: 1.6;">
-                                Thank you for confirming your attendance for <strong>{{ config('constants.EVENT_NAME', 'Event') }} {{ config('constants.EVENT_YEAR', date('Y')) }}</strong>.
+                                Thank you for RSVP on <strong>{{ config('constants.EVENT_NAME', 'Event') }} {{ config('constants.EVENT_YEAR', date('Y')) }}</strong>.
                             </p>
                             <p style="margin: 0 0 20px; font-size: 16px; color: #333333; line-height: 1.6;">
                                 We look forward to seeing you at the event.
