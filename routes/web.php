@@ -73,6 +73,7 @@ use App\Http\Controllers\Ticket\AdminTicketConfigController;
 use App\Http\Controllers\Enquiry\PublicEnquiryController;
 use App\Http\Controllers\ElevateRegistrationController;
 use App\Http\Controllers\VisaClearanceController;
+use App\Http\Controllers\RsvpController;
 
 /* Payment Gateway CCAvenue Routes
 */
@@ -1183,6 +1184,20 @@ Route::get('/enquiry/thankyou', [PublicEnquiryController::class, 'thankyou'])->n
 Route::get('/enquiry', [PublicEnquiryController::class, 'showForm'])->name('enquiry.form');
 Route::get('/enquiry/{eventSlug}', [PublicEnquiryController::class, 'showForm'])->name('enquiry.form.event');
 Route::post('/enquiry', [PublicEnquiryController::class, 'submit'])->name('enquiry.submit');
+
+// RSVP Routes (Public Access - No Authentication Required)
+Route::get('/rsvp/thankyou', [RsvpController::class, 'thankyou'])->name('rsvp.thankyou');
+Route::get('/rsvp', [RsvpController::class, 'showForm'])->name('rsvp.form');
+Route::get('/rsvp/{eventSlug}', [RsvpController::class, 'showForm'])->name('rsvp.form.event');
+Route::post('/rsvp', [RsvpController::class, 'submit'])->name('rsvp.submit');
+
+// RSVP Admin Routes (Admin Access Required)
+Route::middleware(['auth', Auth::class])->prefix('admin/rsvps')->name('admin.rsvps.')->group(function () {
+    Route::get('/', [RsvpController::class, 'index'])->name('index');
+    Route::get('/export', [RsvpController::class, 'export'])->name('export');
+    Route::get('/{id}', [RsvpController::class, 'show'])->name('show');
+    Route::delete('/{id}', [RsvpController::class, 'destroy'])->name('destroy');
+});
 
 // ELEVATE Registration Routes (Public Access - No Authentication Required)
 Route::get('/elevate-registration/thankyou', [ElevateRegistrationController::class, 'thankyou'])->name('elevate-registration.thankyou');
