@@ -64,13 +64,13 @@ class RsvpController extends Controller
         // Validate the request
         $validated = $request->validate([
             'title' => 'nullable|string|max:10',
-            'name' => 'required|string|max:255|min:2',
-            'org' => 'required|string|max:255|min:2',
-            'desig' => 'required|string|max:255|min:2',
-            'email' => 'required|email|max:255|unique:rsvps,email',
+            'name' => 'required|string|max:255',
+            'org' => 'required|string|max:255',
+            'desig' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
             'phone_country_code' => 'nullable|string|max:10',
-            'mob' => 'required|string|min:6|max:15|regex:/^[0-9]+$/',
-            'city' => 'required|string|max:100|min:2',
+            'mob' => 'required|string|max:20|regex:/^[0-9]+$/',
+            'city' => 'required|string|max:100',
             'country' => 'required|string|max:100',
             'association_name' => 'required|string|max:255',
             'comment' => 'nullable|string|max:2000',
@@ -81,20 +81,13 @@ class RsvpController extends Controller
             'event_id' => 'nullable|exists:events,id',
         ], [
             'name.required' => 'Name is required.',
-            'name.min' => 'Name must be at least 2 characters.',
             'org.required' => 'Organization/Institution/University name is required.',
-            'org.min' => 'Organization name must be at least 2 characters.',
             'desig.required' => 'Designation is required.',
-            'desig.min' => 'Designation must be at least 2 characters.',
             'email.required' => 'Email ID is required.',
             'email.email' => 'Please enter a valid email address.',
-            'email.unique' => 'This email has already been registered for RSVP.',
             'mob.required' => 'Contact number is required.',
-            'mob.min' => 'Contact number must be at least 6 digits.',
-            'mob.max' => 'Contact number cannot exceed 15 digits.',
             'mob.regex' => 'Contact number must contain only numbers.',
             'city.required' => 'City is required.',
-            'city.min' => 'City must be at least 2 characters.',
             'country.required' => 'Country is required.',
             'association_name.required' => 'Please select your Association/Organisation Type.',
         ]);
@@ -137,18 +130,8 @@ class RsvpController extends Controller
                 'user_agent' => $request->userAgent(),
             ]);
 
-            // Send confirmation email
-            try {
-                Mail::to($rsvp->email)->send(new RsvpConfirmationMail($rsvp));
-                Log::info('RSVP confirmation email sent', ['rsvp_id' => $rsvp->id, 'email' => $rsvp->email]);
-            } catch (\Exception $e) {
-                Log::error('Failed to send RSVP confirmation email', [
-                    'rsvp_id' => $rsvp->id,
-                    'email' => $rsvp->email,
-                    'error' => $e->getMessage(),
-                ]);
-                // Don't fail the submission if email fails
-            }
+            // Send confirmation email (optional - can be implemented later)
+            // $this->sendConfirmationEmail($rsvp);
 
             return redirect()->route('rsvp.thankyou')
                 ->with('success', 'Thank you for your RSVP! We look forward to seeing you.');
