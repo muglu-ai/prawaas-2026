@@ -130,8 +130,31 @@ class RsvpController extends Controller
                 'user_agent' => $request->userAgent(),
             ]);
 
-            // Send confirmation email (optional - can be implemented later)
-            // $this->sendConfirmationEmail($rsvp);
+            // Send confirmation email to user and BCC recipients
+            try {
+                $bccEmails = config('constants.admin_emails.bcc', []);
+                
+                $mail = Mail::to($rsvp->email);
+                
+                if (!empty($bccEmails)) {
+                    $mail->bcc($bccEmails);
+                }
+                
+                $mail->send(new RsvpConfirmationMail($rsvp));
+                
+                Log::info('RSVP confirmation email sent', [
+                    'rsvp_id' => $rsvp->id,
+                    'email' => $rsvp->email,
+                    'bcc' => $bccEmails,
+                ]);
+            } catch (\Exception $e) {
+                Log::error('Failed to send RSVP confirmation email', [
+                    'rsvp_id' => $rsvp->id,
+                    'email' => $rsvp->email,
+                    'error' => $e->getMessage(),
+                ]);
+                // Don't fail the submission if email fails
+            }
 
             return redirect()->route('rsvp.thankyou')
                 ->with('success', 'Thank you for your RSVP! We look forward to seeing you.');
