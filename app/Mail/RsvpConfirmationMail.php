@@ -22,11 +22,8 @@ class RsvpConfirmationMail extends Mailable
 
     public function envelope(): Envelope
     {
-        $eventName = config('constants.EVENT_NAME', 'Event');
-        $eventYear = config('constants.EVENT_YEAR', date('Y'));
-
         return new Envelope(
-            subject: "RSVP Confirmation - {$eventName} {$eventYear}",
+            subject: "RSVP Confirmation - Prawaas 5.0 Curtain Raiser",
         );
     }
 

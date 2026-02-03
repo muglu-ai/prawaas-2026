@@ -80,6 +80,7 @@
                     <th>Country</th>
                     <th>Event / Location</th>
                     <th>Association</th>
+                    <th>Registration Type</th>
                     <th>
                         <a href="{{ route('admin.rsvps.index', array_merge(request()->all(), ['sort' => 'created_at', 'direction' => ($sort === 'created_at' && $dir === 'asc') ? 'desc' : 'asc'])) }}" class="text-white text-decoration-none">
                             Date/Time @if($sort === 'created_at')<i class="fas fa-sort-{{ $dir === 'asc' ? 'up' : 'down' }} ms-1"></i>@endif
@@ -108,6 +109,12 @@
                         </td>
                         <td>{{ $rsvp->association_name }}</td>
                         <td>
+                            {{ $rsvp->registration_type }}
+                            @if($rsvp->registration_type === 'Other' && $rsvp->registration_type_other)
+                                <br><small class="text-muted">({{ Str::limit($rsvp->registration_type_other, 20) }})</small>
+                            @endif
+                        </td>
+                        <td>
                             @if($rsvp->ddate){{ $rsvp->ddate->format('d M Y') }}@endif
                             @if($rsvp->ttime)<br><small>{{ $rsvp->ttime }}</small>@endif
                         </td>
@@ -129,7 +136,7 @@
                         </td>
                     </tr>
                 @empty
-                    <tr><td colspan="13" class="text-center">No RSVPs found.</td></tr>
+                    <tr><td colspan="14" class="text-center">No RSVPs found.</td></tr>
                 @endforelse
             </tbody>
         </table>

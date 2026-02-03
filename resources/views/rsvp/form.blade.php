@@ -281,18 +281,56 @@
                 @enderror
             </div>
 
-            <!-- Your Association / Organisation Type -->
+            <!-- Enter your Association Name -->
             <div class="form-section">
-                <label class="form-label">Your Association / Organisation Type <span class="required">*</span></label>
-                <select name="association_name" id="association_name" class="form-select" required>
-                    <option value="">Select Association Name</option>
-                    @foreach($organizationTypes ?? [] as $type)
-                        <option value="{{ $type }}" {{ old('association_name') == $type ? 'selected' : '' }}>
-                            {{ $type }}
-                        </option>
-                    @endforeach
-                </select>
+                <label class="form-label">Association Name <span class="required">*</span></label>
+                <input type="text" 
+                       name="association_name" 
+                       id="association_name"
+                       class="form-control" 
+                       placeholder="Enter your Association Name" 
+                       value="{{ old('association_name') }}" 
+                       required>
                 @error('association_name')
+                    <div class="error-message">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Select Registration Type -->
+            <div class="form-section">
+                <label class="form-label">Select Registration Type <span class="required">*</span></label>
+                <select name="registration_type" id="registration_type" class="form-select" required>
+                    <option value="">-- Select Registration Type --</option>
+                    <option value="Bus/Car Operator" {{ old('registration_type') == 'Bus/Car Operator' ? 'selected' : '' }}>Bus/Car Operator</option>
+                    <option value="Corporate / Industry" {{ old('registration_type') == 'Corporate / Industry' ? 'selected' : '' }}>Corporate / Industry</option>
+                    <option value="Startup" {{ old('registration_type') == 'Startup' ? 'selected' : '' }}>Startup</option>
+                    <option value="Academia" {{ old('registration_type') == 'Academia' ? 'selected' : '' }}>Academia</option>
+                    <option value="Institutional Investor" {{ old('registration_type') == 'Institutional Investor' ? 'selected' : '' }}>Institutional Investor</option>
+                    <option value="Investor" {{ old('registration_type') == 'Investor' ? 'selected' : '' }}>Investor</option>
+                    <option value="Central Government" {{ old('registration_type') == 'Central Government' ? 'selected' : '' }}>Central Government</option>
+                    <option value="State Government" {{ old('registration_type') == 'State Government' ? 'selected' : '' }}>State Government</option>
+                    <option value="Industry Associations" {{ old('registration_type') == 'Industry Associations' ? 'selected' : '' }}>Industry Associations</option>
+                    <option value="Trade Mission / Embassy" {{ old('registration_type') == 'Trade Mission / Embassy' ? 'selected' : '' }}>Trade Mission / Embassy</option>
+                    <option value="International Participant" {{ old('registration_type') == 'International Participant' ? 'selected' : '' }}>International Participant</option>
+                    <option value="Service Enabler / Consulting" {{ old('registration_type') == 'Service Enabler / Consulting' ? 'selected' : '' }}>Service Enabler / Consulting</option>
+                    <option value="Student" {{ old('registration_type') == 'Student' ? 'selected' : '' }}>Student</option>
+                    <option value="Other" {{ old('registration_type') == 'Other' ? 'selected' : '' }}>Other</option>
+                </select>
+                @error('registration_type')
+                    <div class="error-message">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Other Registration Type (shown when "Other" is selected) -->
+            <div class="form-section" id="registration_type_other_section" style="display: {{ old('registration_type') == 'Other' ? 'block' : 'none' }};">
+                <label class="form-label">Please Specify Registration Type <span class="required">*</span></label>
+                <input type="text" 
+                       name="registration_type_other" 
+                       id="registration_type_other"
+                       class="form-control" 
+                       placeholder="Please specify your registration type" 
+                       value="{{ old('registration_type_other') }}">
+                @error('registration_type_other')
                     <div class="error-message">{{ $message }}</div>
                 @enderror
             </div>
@@ -421,6 +459,25 @@
 
         const initialCountryData = iti.getSelectedCountryData();
         phoneCountryCode.value = initialCountryData.dialCode;
+    }
+
+    // Registration Type "Other" toggle
+    const registrationTypeSelect = document.getElementById('registration_type');
+    const registrationTypeOtherSection = document.getElementById('registration_type_other_section');
+    const registrationTypeOtherInput = document.getElementById('registration_type_other');
+
+    if (registrationTypeSelect) {
+        registrationTypeSelect.addEventListener('change', function() {
+            if (this.value === 'Other') {
+                registrationTypeOtherSection.style.display = 'block';
+                registrationTypeOtherInput.setAttribute('required', 'required');
+            } else {
+                registrationTypeOtherSection.style.display = 'none';
+                registrationTypeOtherInput.removeAttribute('required');
+                registrationTypeOtherInput.value = '';
+            }
+            updateProgress();
+        });
     }
 
     // Character counter for comments

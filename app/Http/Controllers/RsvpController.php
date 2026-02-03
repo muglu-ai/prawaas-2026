@@ -73,6 +73,8 @@ class RsvpController extends Controller
             'city' => 'required|string|max:100',
             'country' => 'required|string|max:100',
             'association_name' => 'required|string|max:255',
+            'registration_type' => 'required|string|max:255',
+            'registration_type_other' => 'required_if:registration_type,Other|nullable|string|max:255',
             'comment' => 'nullable|string|max:2000',
             'event_identity' => 'nullable|string|max:255',
             'rsvp_location' => 'nullable|string|max:255',
@@ -81,7 +83,6 @@ class RsvpController extends Controller
             'event_id' => 'nullable|exists:events,id',
         ], [
             'name.required' => 'Name is required.',
-            
             'org.required' => 'Organization/Institution/University name is required.',
             'desig.required' => 'Designation is required.',
             'email.required' => 'Email ID is required.',
@@ -91,9 +92,10 @@ class RsvpController extends Controller
             'mob.min' => 'Contact number must be at least 6 digits.',
             'mob.regex' => 'Contact number must contain only numbers.',
             'city.required' => 'City is required.',
-            
             'country.required' => 'Country is required.',
-            'association_name.required' => 'Please select your Association/Organisation Type.',
+            'association_name.required' => 'Please enter your Association Name.',
+            'registration_type.required' => 'Please select a Registration Type.',
+            'registration_type_other.required_if' => 'Please specify your Registration Type.',
         ]);
 
         try {
@@ -129,6 +131,8 @@ class RsvpController extends Controller
                 'rsvp_location' => $validated['rsvp_location'] ?? null,
                 'association_id' => null,
                 'association_name' => $validated['association_name'],
+                'registration_type' => $validated['registration_type'],
+                'registration_type_other' => $validated['registration_type_other'] ?? null,
                 'source_url' => $request->fullUrl(),
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->userAgent(),
@@ -161,7 +165,8 @@ class RsvpController extends Controller
             }
 
             return redirect()->route('rsvp.thankyou')
-                ->with('success', 'Thank you for your RSVP! We look forward to seeing you.');
+                ->with('success', 'Thank you for your RSVP! We look forward to seeing you.')
+                ->with('rsvp_id', $rsvp->id);
 
         } catch (\Exception $e) {
             Log::error('RSVP submission error', [
@@ -178,9 +183,21 @@ class RsvpController extends Controller
     /**
      * Show thank you page
      */
-    public function thankyou()
+    public function thankyou(Request $request)
     {
-        return view('rsvp.thankyou');
+        $rsvp = null;
+        
+        // First try to get from session (after form submission)
+        if (session('rsvp_id')) {
+            $rsvp = Rsvp::find(session('rsvp_id'));
+        }
+        
+        // If no session, check for query parameter (for testing/direct access)
+        if (!$rsvp && $request->has('id')) {
+            $rsvp = Rsvp::find($request->get('id'));
+        }
+        
+        return view('rsvp.thankyou', compact('rsvp'));
     }
 
     /**

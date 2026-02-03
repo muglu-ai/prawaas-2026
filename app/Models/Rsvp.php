@@ -28,6 +28,8 @@ class Rsvp extends Model
         'rsvp_location',
         'association_id',
         'association_name',
+        'registration_type',
+        'registration_type_other',
         'source_url',
         'ip_address',
         'user_agent',

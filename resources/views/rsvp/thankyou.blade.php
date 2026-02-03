@@ -4,260 +4,411 @@
 
 @push('styles')
 <style>
+    .thankyou-wrapper {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1rem;
+    }
+
     .thankyou-container {
-        max-width: 700px;
+        max-width: 650px;
+        width: 100%;
         margin: 0 auto;
-        background: var(--bg-secondary, #ffffff);
-        border-radius: 15px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        padding: 3rem;
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+        overflow: hidden;
+    }
+
+    /* Header Section */
+    .thankyou-header {
+        background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+        padding: 2.5rem 2rem;
         text-align: center;
+        position: relative;
+    }
+
+    .thankyou-header::after {
+        content: '';
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-top: 20px solid #2c5282;
     }
 
     .success-icon {
-        width: 100px;
-        height: 100px;
-        background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+        width: 80px;
+        height: 80px;
+        background: rgba(255,255,255,0.15);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 0 auto 2rem;
-        color: white;
-        font-size: 3rem;
-        box-shadow: 0 4px 12px rgba(30, 58, 95, 0.3);
+        margin: 0 auto 1.25rem;
+        color: #4ade80;
+        font-size: 2.5rem;
+        border: 3px solid rgba(74, 222, 128, 0.3);
     }
 
-    .thankyou-container h1 {
-        color: var(--text-primary, #333333);
-        margin-bottom: 1rem;
-        font-size: 2rem;
+    .thankyou-header h1 {
+        color: #ffffff;
+        margin: 0 0 0.75rem;
+        font-size: 1.75rem;
         font-weight: 700;
     }
 
-    .thankyou-container > p {
-        color: var(--text-secondary, #666666);
-        font-size: 1.1rem;
+    .thankyou-header p {
+        color: rgba(255,255,255,0.9);
+        font-size: 1rem;
         line-height: 1.6;
-        margin-bottom: 1rem;
+        margin: 0;
     }
 
-    .event-details-card {
-        background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
-        border-radius: 12px;
+    .thankyou-header p strong {
+        color: #ffd700;
+    }
+
+    /* Body Section */
+    .thankyou-body {
+        padding: 2.5rem 2rem 2rem;
+    }
+
+    /* Curtain Raiser Details Card */
+    .details-card {
+        background: #f8fafc;
+        border-radius: 16px;
         overflow: hidden;
-        margin: 2rem 0;
-        text-align: left;
+        border: 1px solid #e2e8f0;
+        margin-bottom: 1.5rem;
     }
 
-    .event-date-time-bar {
-        background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+    .details-card-header {
+        background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+        padding: 1rem 1.5rem;
+        color: #ffd700;
+        font-weight: 600;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .details-card-header i {
+        font-size: 1rem;
+    }
+
+    .date-time-row {
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
         padding: 1rem 1.5rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        flex-wrap: wrap;
         gap: 2rem;
+        flex-wrap: wrap;
     }
 
-    .event-date-time-bar .date-item,
-    .event-date-time-bar .time-item {
+    .date-time-item {
         display: flex;
         align-items: center;
         gap: 0.5rem;
         color: white;
-        font-size: 1rem;
         font-weight: 500;
+        font-size: 0.95rem;
     }
 
-    .event-date-time-bar .date-item i,
-    .event-date-time-bar .time-item i {
-        font-size: 1.1rem;
-        opacity: 0.9;
+    .date-time-item i {
+        opacity: 0.85;
     }
 
-    .event-venue-section {
+    .venue-section {
         padding: 1.5rem;
-        color: white;
-        background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+        background: white;
     }
 
-    .event-venue-section .venue-row {
+    .venue-item {
         display: flex;
-        align-items: flex-start;
-        gap: 0.75rem;
-        margin-bottom: 1rem;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
     }
 
-    .event-venue-section .venue-row:last-child {
+    .venue-item:last-child {
         margin-bottom: 0;
     }
 
-    .event-venue-section .venue-row > i {
-        font-size: 1.1rem;
-        margin-top: 4px;
-        width: 20px;
-        text-align: center;
+    .venue-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         flex-shrink: 0;
-    }
-
-    .event-venue-section .venue-row > i.fa-map-marker-alt {
-        color: #ef4444;
-    }
-
-    .event-venue-section .venue-row > i.fa-info-circle {
-        color: #60a5fa;
-    }
-
-    .event-venue-section .venue-text {
-        flex: 1;
-        line-height: 1.6;
-        color: white;
-    }
-
-    .event-venue-section .venue-name {
-        font-weight: 600;
-        font-size: 1.05rem;
-        margin-bottom: 0.25rem;
-    }
-
-    .event-venue-section .venue-address {
-        opacity: 0.9;
-    }
-
-    .note-text {
-        background: rgba(255,255,255,0.15);
-        padding: 0.75rem 1rem;
-        border-radius: 6px;
-        font-size: 0.95rem;
-        color: white;
-        flex: 1;
-    }
-
-    .note-text strong {
-        color: #fbbf24;
-    }
-
-    .footer-signature {
-        background: #1a2e4a;
-        padding: 1.5rem;
-        font-size: 0.9rem;
-        line-height: 1.7;
-        color: #cbd5e1;
-        text-align: left;
-    }
-
-    .footer-signature .team-name {
-        font-weight: 600;
-        color: #fbbf24;
-        margin-bottom: 0.5rem;
         font-size: 1rem;
     }
 
-    .footer-signature .team-title {
-        color: white;
+    .venue-icon.location {
+        background: #fee2e2;
+        color: #dc2626;
+    }
+
+    .venue-icon.note {
+        background: #dbeafe;
+        color: #2563eb;
+    }
+
+    .venue-content {
+        flex: 1;
+    }
+
+    .venue-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #64748b;
+        margin-bottom: 0.25rem;
+        font-weight: 600;
+    }
+
+    .venue-name {
+        font-weight: 600;
+        color: #1e293b;
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .venue-address {
+        color: #475569;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .note-text {
+        color: #475569;
+        font-size: 0.9rem;
+        background: #f1f5f9;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        border-left: 3px solid #3b82f6;
+    }
+
+    /* Contact Section */
+    .contact-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-title {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #334155;
         margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
     }
 
-    .footer-signature .contact-info {
-        color: #94a3b8;
+    .contact-title i {
+        color: #3b82f6;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .contact-card {
+        background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+        border-radius: 12px;
+        padding: 1.25rem;
+        color: white;
+    }
+
+    .contact-card-label {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #ffd700;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+
+    .contact-card-name {
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .contact-card-info {
         font-size: 0.85rem;
-        line-height: 1.8;
+        opacity: 0.9;
+        line-height: 1.6;
     }
 
+    .contact-card-info a {
+        color: #93c5fd;
+        text-decoration: none;
+    }
+
+    .contact-card-info a:hover {
+        text-decoration: underline;
+    }
+
+    /* Footer Signature */
+    .footer-signature {
+        background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+        padding: 1.5rem 2rem;
+        text-align: center;
+        color: white;
+    }
+
+    .footer-signature .thank-text {
+        color: #ffd700;
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .footer-signature .team-text {
+        font-size: 1rem;
+    }
+
+    /* Responsive */
     @media (max-width: 576px) {
-        .thankyou-container {
+        .thankyou-wrapper {
+            padding: 1rem;
+        }
+
+        .thankyou-header {
             padding: 2rem 1.5rem;
         }
-        
-        .event-date-time-bar {
+
+        .thankyou-header h1 {
+            font-size: 1.5rem;
+        }
+
+        .thankyou-body {
+            padding: 2rem 1.5rem 1.5rem;
+        }
+
+        .date-time-row {
             flex-direction: column;
             gap: 0.75rem;
         }
-        
-        .thankyou-container h1 {
-            font-size: 1.5rem;
+
+        .contact-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .footer-signature {
+            padding: 1.25rem 1.5rem;
         }
     }
 </style>
 @endpush
 
 @section('content')
-@php
-    $rsvpConfig = config('constants.rsvp', []);
-    $rsvpEventDate = $rsvpConfig['event_date'] ?? null;
-    $rsvpEventTime = $rsvpConfig['event_time'] ?? '';
-    $rsvpVenueName = $rsvpConfig['venue_name'] ?? '';
-    $rsvpVenueAddress = $rsvpConfig['venue_address'] ?? '';
-    $rsvpNote = $rsvpConfig['note'] ?? '';
-@endphp
-
-<div class="thankyou-container">
-    <div class="success-icon">
-        <i class="fas fa-calendar-check"></i>
-    </div>
-    <h1>Thank You for Your RSVP!</h1>
-    <p>Your RSVP has been submitted successfully. We look forward to seeing you at the event.</p>
-    
-    @if(session('success'))
-        <div class="alert alert-success mt-3">
-            {{ session('success') }}
-        </div>
-    @endif
-
-    {{-- Event Details Card --}}
-    <div class="event-details-card">
-        <div class="event-date-time-bar">
-            <div class="date-item">
-                <i class="fas fa-calendar-alt"></i>
-                @if($rsvpEventDate)
-                    {{ \Carbon\Carbon::parse($rsvpEventDate)->format('l, F jS, Y') }}
-                @else
-                    Event Date TBA
-                @endif
-            </div>
-            <div class="time-item">
-                <i class="far fa-clock"></i>
-                {{ $rsvpEventTime ?: 'Time TBA' }}
-            </div>
-        </div>
-        
-        <div class="event-venue-section">
-            <div class="venue-row">
-                <i class="fas fa-map-marker-alt"></i>
-                <div class="venue-text">
-                    @if($rsvpVenueName)
-                        <div class="venue-name">{{ $rsvpVenueName }}</div>
-                    @endif
-                    <div class="venue-address">{{ $rsvpVenueAddress }}</div>
-                </div>
-            </div>
-            
-            @if($rsvpNote)
-            <div class="venue-row">
-                <i class="fas fa-info-circle"></i>
-                <div class="note-text">
-                    {{ $rsvpNote }}
-                </div>
-            </div>
+<div class="thankyou-wrapper">
+    <div class="thankyou-container">
+        {{-- Header --}}
+        <div class="thankyou-header">
+           
+            @if($rsvp)
+            <p style="font-size: 1.1rem; margin-bottom: 0.75rem;">Dear {{ $rsvp->name }},</p>
             @endif
+          
+            <p>Thank you for submitting your RSVP for the <strong>Prawaas 5.0 Curtain Raiser</strong>.</p>
         </div>
 
-        <div class="footer-signature">
-            <div class="team-name">Thank You,</div>
-            <div class="team-title">{{ $rsvpConfig['contact_name'] ?? 'Team ' . config('constants.EVENT_NAME', 'Event') }}, Event Secretariat</div>
-            <div class="contact-info">
-                {!! nl2br(e($rsvpConfig['contact_address'] ?? '')) !!}<br>
-                Tel: {{ $rsvpConfig['contact_phone'] ?? '' }}<br>
-                Website: {{ $rsvpConfig['contact_website'] ?? '' }}
+        {{-- Body --}}
+        <div class="thankyou-body">
+            @if(session('success'))
+                <div class="alert alert-success mb-4">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            {{-- Curtain Raiser Details --}}
+            <div class="details-card">
+                <div class="details-card-header">
+                    <i class="fas fa-star"></i>
+                    Curtain Raiser Details
+                </div>
+                
+                <div class="date-time-row">
+                    <div class="date-time-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        Monday, 16 February 2026
+                    </div>
+                    <div class="date-time-item">
+                        <i class="fas fa-clock"></i>
+                        6:00 PM onwards
+                    </div>
+                </div>
+
+                <div class="venue-section">
+                    <div class="venue-item">
+                        <div class="venue-icon location">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="venue-content">
+                            <div class="venue-label">Venue</div>
+                            <div class="venue-name">Inspiration Hall, Crowne Plaza Ahmedabad City Centre</div>
+                            <div class="venue-address">S.G. Highway, Near Shapath-V, Ahmedabad – 380015</div>
+                        </div>
+                    </div>
+
+                    <div class="venue-item">
+                        <div class="venue-icon note">
+                            <i class="fas fa-info"></i>
+                        </div>
+                        <div class="venue-content">
+                            <div class="venue-label">Note</div>
+                            <div class="note-text">The function will be followed by high tea.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Contact Information --}}
+            <div class="contact-section">
+                <div class="contact-title">
+                    <i class="fas fa-phone-alt"></i>
+                    For more information, please get in touch with:
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-card-label">For Industry</div>
+                        <div class="contact-card-name">Ms. Sneha Singh</div>
+                        <div class="contact-card-info">
+                            Mobile: +91 - 76762 68577<br>
+                            Email: <a href="mailto:sneha.singh@mmactiv.com">sneha.singh@mmactiv.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-card-label">For Operators</div>
+                        <div class="contact-card-name">Mr. Siddiq Gandhi</div>
+                        <div class="contact-card-info">
+                            Mobile: +91 99790 19191
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="mt-4">
-        <a href="{{ url('/') }}" class="btn btn-primary" style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%); border: none; padding: 0.75rem 2rem;">
-            <i class="fas fa-home me-2"></i>Back to Home
-        </a>
+        {{-- Footer --}}
+        <div class="footer-signature">
+            <div class="thank-text">Thank you,</div>
+            <div class="team-text">Team Prawaas 5.0</div>
+        </div>
     </div>
 </div>
 @endsection

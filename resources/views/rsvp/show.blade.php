@@ -89,64 +89,55 @@
     {{-- RSVP Confirmation Preview Card --}}
     <div class="rsvp-confirmation-card">
         <div class="greeting">
-            Dear {{ $rsvp->title ? $rsvp->title . '. ' : '' }}{{ $rsvp->name }},
+            Dear {{ $rsvp->name }},
         </div>
-        <p>Greetings from {{ config('constants.EVENT_NAME', 'Bengaluru Tech Summit') }} {{ config('constants.EVENT_YEAR', date('Y')) }} !!</p>
         
-        @if($rsvp->event_identity)
-        <div class="event-title">
-            Thank you for RSVP on {{ $rsvp->event_identity }}
-        </div>
-        @else
-        <div class="event-title">
-            Thank you for your RSVP!
-        </div>
-        @endif
-
-        <p>Mentioned below are the details of event for your kind reference</p>
+        <p style="margin-bottom: 1.5rem;">Thank you for submitting your RSVP for the <strong style="color: #ffd700;">Prawaas 5.0 Curtain Raiser</strong>.</p>
 
         <div class="event-details-box">
-            @if($rsvp->ddate)
-            <div class="detail-row">
-                <span class="detail-label">Date:</span>
-                <span class="detail-value">{{ $rsvp->ddate->format('l, jS F Y') }}</span>
+            <h5 style="color: #ffd700; margin-bottom: 1.25rem; font-size: 1.1rem;">Curtain Raiser Details:</h5>
+            
+            <div style="margin-bottom: 1rem;">
+                <div style="color: #ffd700; font-weight: 600; margin-bottom: 0.25rem;">Date & Time:</div>
+                <div>Monday, 16 February 2026 | 6:00 PM onwards</div>
             </div>
-            @endif
-            @if($rsvp->ttime)
-            <div class="detail-row">
-                <span class="detail-label">Time:</span>
-                <span class="detail-value">{{ $rsvp->ttime }}</span>
+            
+            <div style="margin-bottom: 1rem;">
+                <div style="color: #ffd700; font-weight: 600; margin-bottom: 0.25rem;">Venue:</div>
+                <div>Inspiration Hall, Crowne Plaza Ahmedabad City Centre<br>S.G. Highway, Near Shapath-V, Ahmedabad – 380015</div>
             </div>
-            @endif
-            @if($rsvp->comment)
-            <div class="detail-row">
-                <span class="detail-label"></span>
-                <span class="detail-value">{{ $rsvp->comment }}</span>
+            
+            <div>
+                <div style="color: #ffd700; font-weight: 600; margin-bottom: 0.25rem;">Note:</div>
+                <div>The function will be followed by high tea.</div>
             </div>
-            @endif
-            @if($rsvp->rsvp_location)
-            <div class="detail-row">
-                <span class="detail-label">Venue:</span>
-                <span class="detail-value">{{ $rsvp->rsvp_location }}</span>
-            </div>
-            @endif
         </div>
 
-        <p>Looking forward to meet you.</p>
-
-        @php
-            $rsvpConfig = config('constants.rsvp', []);
-        @endphp
-        <div class="footer-signature">
-            <div class="team-name">Thank You,</div>
-            <div>{{ $rsvpConfig['contact_name'] ?? 'Team ' . config('constants.EVENT_NAME', 'Event') }}, Event Secretariat</div>
-            <div class="mt-2">
-                <small>
-                    {!! nl2br(e($rsvpConfig['contact_address'] ?? '')) !!}<br>
-                    Tel: {{ $rsvpConfig['contact_phone'] ?? config('constants.ORGANIZER_PHONE', '') }}<br>
-                    Website: <a href="https://{{ $rsvpConfig['contact_website'] ?? config('constants.EVENT_WEBSITE', '') }}" class="text-white">{{ $rsvpConfig['contact_website'] ?? config('constants.EVENT_WEBSITE', '') }}</a>
-                </small>
+        <div style="margin-top: 1.5rem;">
+            <p style="margin-bottom: 1rem; font-weight: 600;">For more information, please get in touch with:</p>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px;">
+                        <div style="color: #ffd700; font-weight: 600; margin-bottom: 0.5rem;">For Industry</div>
+                        <div>Ms. Sneha Singh</div>
+                        <div>Mobile: +91 - 76762 68577</div>
+                        <div>Email: <a href="mailto:sneha.singh@mmactiv.com" style="color: #ffffff; text-decoration: underline;">sneha.singh@mmactiv.com</a></div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div style="background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px;">
+                        <div style="color: #ffd700; font-weight: 600; margin-bottom: 0.5rem;">For Operators</div>
+                        <div>Mr. Siddiq Gandhi</div>
+                        <div>Mobile: +91 99790 19191</div>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <div class="footer-signature">
+            <div class="team-name">Thank you,</div>
+            <div>Team Prawaas 5.0</div>
         </div>
     </div>
 
@@ -172,8 +163,17 @@
                             <td>{{ $rsvp->desig }}</td>
                         </tr>
                         <tr>
-                            <th class="text-muted">Organisation Type:</th>
+                            <th class="text-muted">Association Name:</th>
                             <td>{{ $rsvp->association_name }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-muted">Registration Type:</th>
+                            <td>
+                                {{ $rsvp->registration_type }}
+                                @if($rsvp->registration_type === 'Other' && $rsvp->registration_type_other)
+                                    <br><small class="text-muted">({{ $rsvp->registration_type_other }})</small>
+                                @endif
+                            </td>
                         </tr>
                     </table>
                 </div>
