@@ -7,7 +7,7 @@
     .thankyou-container {
         max-width: 700px;
         margin: 0 auto;
-        background: var(--bg-secondary);
+        background: var(--bg-secondary, #ffffff);
         border-radius: 15px;
         box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         padding: 3rem;
@@ -29,13 +29,14 @@
     }
 
     .thankyou-container h1 {
-        color: var(--text-primary);
+        color: var(--text-primary, #333333);
         margin-bottom: 1rem;
         font-size: 2rem;
+        font-weight: 700;
     }
 
     .thankyou-container > p {
-        color: var(--text-secondary);
+        color: var(--text-secondary, #666666);
         font-size: 1.1rem;
         line-height: 1.6;
         margin-bottom: 1rem;
@@ -56,7 +57,7 @@
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 1.5rem;
+        gap: 2rem;
     }
 
     .event-date-time-bar .date-item,
@@ -69,14 +70,16 @@
         font-weight: 500;
     }
 
-    .event-date-time-bar i {
-        font-size: 1.2rem;
+    .event-date-time-bar .date-item i,
+    .event-date-time-bar .time-item i {
+        font-size: 1.1rem;
         opacity: 0.9;
     }
 
     .event-venue-section {
         padding: 1.5rem;
         color: white;
+        background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
     }
 
     .event-venue-section .venue-row {
@@ -90,46 +93,91 @@
         margin-bottom: 0;
     }
 
-    .event-venue-section i {
+    .event-venue-section .venue-row > i {
         font-size: 1.1rem;
-        margin-top: 3px;
-        opacity: 0.9;
+        margin-top: 4px;
         width: 20px;
         text-align: center;
+        flex-shrink: 0;
     }
 
-    .event-venue-section .venue-row i.fa-map-marker-alt {
+    .event-venue-section .venue-row > i.fa-map-marker-alt {
         color: #ef4444;
+    }
+
+    .event-venue-section .venue-row > i.fa-info-circle {
+        color: #60a5fa;
     }
 
     .event-venue-section .venue-text {
         flex: 1;
-        line-height: 1.5;
+        line-height: 1.6;
+        color: white;
     }
 
     .event-venue-section .venue-name {
         font-weight: 600;
         font-size: 1.05rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .event-venue-section .venue-address {
+        opacity: 0.9;
     }
 
     .note-text {
-        background: rgba(255,255,255,0.1);
+        background: rgba(255,255,255,0.15);
         padding: 0.75rem 1rem;
         border-radius: 6px;
         font-size: 0.95rem;
+        color: white;
+        flex: 1;
+    }
+
+    .note-text strong {
+        color: #fbbf24;
     }
 
     .footer-signature {
-        background: rgba(0,0,0,0.2);
-        padding: 1.25rem 1.5rem;
+        background: #1a2e4a;
+        padding: 1.5rem;
         font-size: 0.9rem;
-        line-height: 1.6;
+        line-height: 1.7;
+        color: #cbd5e1;
+        text-align: left;
     }
 
     .footer-signature .team-name {
         font-weight: 600;
-        color: #ffd700;
-        margin-bottom: 0.25rem;
+        color: #fbbf24;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+    }
+
+    .footer-signature .team-title {
+        color: white;
+        margin-bottom: 1rem;
+    }
+
+    .footer-signature .contact-info {
+        color: #94a3b8;
+        font-size: 0.85rem;
+        line-height: 1.8;
+    }
+
+    @media (max-width: 576px) {
+        .thankyou-container {
+            padding: 2rem 1.5rem;
+        }
+        
+        .event-date-time-bar {
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .thankyou-container h1 {
+            font-size: 1.5rem;
+        }
     }
 </style>
 @endpush
@@ -181,7 +229,7 @@
                     @if($rsvpVenueName)
                         <div class="venue-name">{{ $rsvpVenueName }}</div>
                     @endif
-                    {{ $rsvpVenueAddress }}
+                    <div class="venue-address">{{ $rsvpVenueAddress }}</div>
                 </div>
             </div>
             
@@ -197,8 +245,8 @@
 
         <div class="footer-signature">
             <div class="team-name">Thank You,</div>
-            <div>{{ $rsvpConfig['contact_name'] ?? 'Team ' . config('constants.EVENT_NAME', 'Event') }}, Event Secretariat</div>
-            <div class="mt-2">
+            <div class="team-title">{{ $rsvpConfig['contact_name'] ?? 'Team ' . config('constants.EVENT_NAME', 'Event') }}, Event Secretariat</div>
+            <div class="contact-info">
                 {!! nl2br(e($rsvpConfig['contact_address'] ?? '')) !!}<br>
                 Tel: {{ $rsvpConfig['contact_phone'] ?? '' }}<br>
                 Website: {{ $rsvpConfig['contact_website'] ?? '' }}
