@@ -1,9 +1,9 @@
 <?php
 
-const MAIL_FROM_NAME = 'Prawaas 2026';
-const APP_NAME = 'Prawaas 2026';
-const APP_NAME_SHORT = 'Prawaas 2026';
-const EVENT_NAME = 'Prawaas 2026';
+const MAIL_FROM_NAME = 'Prawaas';
+const APP_NAME = 'Prawaas';
+const APP_NAME_SHORT = 'Prawaas';
+const EVENT_NAME = 'Prawaas';
 const EVENT_YEAR = '2026';
 const SHORT_NAME = 'Prawaas';
 
