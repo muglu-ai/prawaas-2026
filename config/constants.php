@@ -397,4 +397,20 @@ return [
     ],
     'GST_API_URL' => GST_API_URL,
     'GST_API_KEY' => GST_API_KEY,
+
+    // RSVP Event Configuration
+    'rsvp' => [
+       
+        'event_date' => '2026-02-16', // Format: YYYY-MM-DD
+        'event_time' => '06:00 PM onwards',
+        'venue_name' => 'Inspiration Hall, Crowne Plaza Ahmedabad City Centre',
+        'venue_address' => 'S.G Highway, Near Shapath - V, Ahmedabad, 380015',
+        'venue_full' => 'Inspiration Hall, Crowne Plaza Ahmedabad City Centre, S.G Highway, Near Shapath - V, Ahmedabad, 380015',
+        'note' => 'Function followed by High Tea',
+        // Contact details for RSVP confirmation
+        'contact_name' => 'Team ' . EVENT_NAME,
+        'contact_address' => "No.11/6, NITON, Block \"C\",\nSecond Floor, Palace Road,\nBengaluru - 560001, Karnataka, India",
+        'contact_phone' => '+91 08069328400',
+        'contact_website' => 'www.prawaas.com',
+    ],
 ];

@@ -41,6 +41,55 @@
         color: #6c757d;
         margin-top: 0.25rem;
     }
+
+    /* Event Details Banner */
+    .event-banner {
+        background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+        border-radius: 12px;
+        padding: 0;
+        margin-bottom: 2rem;
+        overflow: hidden;
+    }
+    .event-date-time-bar {
+        background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+        padding: 1rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+    .event-date-time-bar .date-item,
+    .event-date-time-bar .time-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: white;
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    .event-date-time-bar .date-item i,
+    .event-date-time-bar .time-item i {
+        font-size: 1.2rem;
+        opacity: 0.9;
+    }
+    .event-venue-bar {
+        background: white;
+        padding: 1rem 1.5rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        color: #374151;
+        font-size: 0.95rem;
+    }
+    .event-venue-bar i {
+        color: #ef4444;
+        font-size: 1.2rem;
+        margin-top: 2px;
+    }
+    .event-venue-bar .venue-text {
+        line-height: 1.5;
+    }
 </style>
 @endpush
 
@@ -52,6 +101,41 @@
     </div>
 
     <div class="form-body">
+        {{-- Event Details Banner --}}
+        @php
+            $rsvpConfig = config('constants.rsvp', []);
+            $rsvpEventDate = $rsvpConfig['event_date'] ?? null;
+            $rsvpEventTime = $rsvpConfig['event_time'] ?? '';
+            $rsvpVenueName = $rsvpConfig['venue_name'] ?? '';
+            $rsvpVenueAddress = $rsvpConfig['venue_address'] ?? '';
+        @endphp
+        
+        <div class="event-banner">
+            <div class="event-date-time-bar">
+                <div class="date-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    @if($rsvpEventDate)
+                        {{ \Carbon\Carbon::parse($rsvpEventDate)->format('l, F jS, Y') }}
+                    @else
+                        Event Date TBA
+                    @endif
+                </div>
+                <div class="time-item">
+                    <i class="far fa-clock"></i>
+                    {{ $rsvpEventTime ?: 'Time TBA' }}
+                </div>
+            </div>
+            <div class="event-venue-bar">
+                <i class="fas fa-map-marker-alt"></i>
+                <div class="venue-text">
+                    @if($rsvpVenueName)
+                        <strong>{{ $rsvpVenueName }}</strong><br>
+                    @endif
+                    {{ $rsvpVenueAddress }}
+                </div>
+            </div>
+        </div>
+
         <!-- Progress Indicator -->
         <div class="progress-container">
             <div class="step-indicator">
@@ -78,18 +162,10 @@
         <form action="{{ route('rsvp.submit') }}" method="POST" id="rsvpForm">
             @csrf
             <input type="hidden" name="event_id" value="{{ $event->id ?? '' }}">
-            @if($eventIdentity)
-                <input type="hidden" name="event_identity" value="{{ $eventIdentity }}">
-            @endif
-            @if($rsvpLocation)
-                <input type="hidden" name="rsvp_location" value="{{ $rsvpLocation }}">
-            @endif
-            @if($eventDate)
-                <input type="hidden" name="ddate" value="{{ $eventDate }}">
-            @endif
-            @if($eventTime)
-                <input type="hidden" name="ttime" value="{{ $eventTime }}">
-            @endif
+            <input type="hidden" name="event_identity" value="{{ $eventIdentity ?: ($rsvpConfig['event_name'] ?? '') }}">
+            <input type="hidden" name="rsvp_location" value="{{ $rsvpLocation ?: ($rsvpConfig['venue_full'] ?? '') }}">
+            <input type="hidden" name="ddate" value="{{ $eventDate ?: ($rsvpConfig['event_date'] ?? '') }}">
+            <input type="hidden" name="ttime" value="{{ $eventTime ?: ($rsvpConfig['event_time'] ?? '') }}">
 
             <!-- Name -->
             <div class="form-section">
