@@ -120,7 +120,7 @@
             @endif
             @if($rsvp->comment)
             <div class="detail-row">
-                <span class="detail-label">Note:</span>
+                <span class="detail-label"></span>
                 <span class="detail-value">{{ $rsvp->comment }}</span>
             </div>
             @endif
@@ -264,46 +264,9 @@
         </div>
     </div>
 
-    {{-- Technical Information (Collapsible) --}}
-    <div class="card mb-4">
-        <div class="card-header bg-light" data-bs-toggle="collapse" data-bs-target="#technicalInfo" style="cursor: pointer;">
-            <h5 class="mb-0">
-                <i class="fas fa-cog me-2 text-muted"></i>Technical Information
-                <i class="fas fa-chevron-down float-end"></i>
-            </h5>
-        </div>
-        <div id="technicalInfo" class="collapse">
-            <div class="card-body">
-                <table class="table table-sm table-borderless mb-0">
-                    <tr>
-                        <th width="20%" class="text-muted">Source URL:</th>
-                        <td><small class="text-muted">{{ $rsvp->source_url ?? 'N/A' }}</small></td>
-                    </tr>
-                    <tr>
-                        <th class="text-muted">IP Address:</th>
-                        <td><small class="text-muted">{{ $rsvp->ip_address ?? 'N/A' }}</small></td>
-                    </tr>
-                    <tr>
-                        <th class="text-muted">User Agent:</th>
-                        <td><small class="text-muted">{{ $rsvp->user_agent ?? 'N/A' }}</small></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
 
-    {{-- Action Buttons --}}
-    <div class="d-flex justify-content-between">
-        <a href="{{ route('admin.rsvps.index') }}" class="btn btn-secondary">
-            <i class="fas fa-arrow-left me-1"></i> Back to List
-        </a>
-        <form action="{{ route('admin.rsvps.destroy', $rsvp->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this RSVP?');">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger">
-                <i class="fas fa-trash me-1"></i> Delete RSVP
-            </button>
-        </form>
-    </div>
+
+
+
 </div>
 @endsection

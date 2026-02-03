@@ -238,24 +238,10 @@ return [
         'Transport Dep',
     ],
     'organization_types' => [
-        'Startup',
-        'MSME',
-        'Traditional Businesses',
-        'Incubator',
-        'Accelerator',
-        'Institutional Investor',
-        'Academic Institution',
-        'Corporate / Industry',
-        'R&D Labs',
-        'Investors',
-        'Government',
-        'Industry Associations',
-        'Consulting',
-        'Trade Mission',
-        'Service Enabler / Consulting',
-        'Trade Mission / Embassay',
-        'Students',
-        'Others'
+        'Bus & Car Operators Confederation of India (BOCI)',
+    'Karnataka State Bus Owners Association',
+    'The Karnataka State Travel Operators Association (KSTOA)',
+    'OTHER'
     ],
     'SUB_SECTORS' => [
         'IT',

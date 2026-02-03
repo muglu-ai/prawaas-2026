@@ -44,12 +44,13 @@
 
     /* Event Details Banner */
     .event-banner {
-        background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
         border-radius: 12px;
-        padding: 0;
-        margin-bottom: 2rem;
         overflow: hidden;
+        margin-top: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
+    
     .event-date-time-bar {
         background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
         padding: 1rem 1.5rem;
@@ -57,8 +58,9 @@
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 1.5rem;
+        gap: 2rem;
     }
+    
     .event-date-time-bar .date-item,
     .event-date-time-bar .time-item {
         display: flex;
@@ -68,27 +70,52 @@
         font-size: 1rem;
         font-weight: 500;
     }
+    
     .event-date-time-bar .date-item i,
     .event-date-time-bar .time-item i {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         opacity: 0.9;
     }
+    
     .event-venue-bar {
-        background: white;
-        padding: 1rem 1.5rem;
+        background: #ffffff;
+        padding: 1.25rem 1.5rem;
         display: flex;
         align-items: flex-start;
         gap: 0.75rem;
         color: #374151;
         font-size: 0.95rem;
+        border: 1px solid #e5e7eb;
+        border-top: none;
+        border-radius: 0 0 12px 12px;
     }
+    
     .event-venue-bar i {
         color: #ef4444;
         font-size: 1.2rem;
         margin-top: 2px;
+        flex-shrink: 0;
     }
+    
     .event-venue-bar .venue-text {
-        line-height: 1.5;
+        line-height: 1.6;
+    }
+    
+    .event-venue-bar .venue-text strong {
+        color: #1f2937;
+        font-weight: 600;
+    }
+
+    @media (max-width: 576px) {
+        .event-date-time-bar {
+            flex-direction: column;
+            gap: 0.75rem;
+            padding: 1rem;
+        }
+        
+        .event-venue-bar {
+            padding: 1rem;
+        }
     }
 </style>
 @endpush
@@ -101,6 +128,26 @@
     </div>
 
     <div class="form-body">
+       
+
+        <!-- Progress Indicator -->
+        <div class="progress-container">
+            <div class="step-indicator">
+                <div class="step-item active">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Your Information</div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Confirmation</div>
+                </div>
+            </div>
+            <div class="progress-bar-custom">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
         {{-- Event Details Banner --}}
         @php
             $rsvpConfig = config('constants.rsvp', []);
@@ -133,24 +180,6 @@
                     @endif
                     {{ $rsvpVenueAddress }}
                 </div>
-            </div>
-        </div>
-
-        <!-- Progress Indicator -->
-        <div class="progress-container">
-            <div class="step-indicator">
-                <div class="step-item active">
-                    <div class="step-number">1</div>
-                    <div class="step-label">Your Information</div>
-                </div>
-                <div class="step-connector"></div>
-                <div class="step-item">
-                    <div class="step-number">2</div>
-                    <div class="step-label">Confirmation</div>
-                </div>
-            </div>
-            <div class="progress-bar-custom">
-                <div class="progress-fill" id="progressFill"></div>
             </div>
         </div>
 
@@ -328,7 +357,7 @@
             <!-- Submit Button -->
             <div class="form-section">
                 <button type="submit" class="btn-submit" id="submitBtn">
-                    SUBMIT RSVP <i class="fas fa-arrow-right ms-2"></i>
+                    SUBMIT <i class="fas fa-arrow-right ms-2"></i>
                 </button>
             </div>
         </form>

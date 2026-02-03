@@ -237,7 +237,7 @@
             <div class="venue-row">
                 <i class="fas fa-info-circle"></i>
                 <div class="note-text">
-                    <strong>Note:</strong> {{ $rsvpNote }}
+                    {{ $rsvpNote }}
                 </div>
             </div>
             @endif
