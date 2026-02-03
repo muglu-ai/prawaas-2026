@@ -46,14 +46,6 @@ class Rsvp extends Model
     }
 
     /**
-     * Get the association for this RSVP
-     */
-    public function association(): BelongsTo
-    {
-        return $this->belongsTo(\App\Models\Ticket\TicketAssociation::class, 'association_id');
-    }
-
-    /**
      * Get full phone number with country code
      */
     public function getFullPhoneAttribute(): string

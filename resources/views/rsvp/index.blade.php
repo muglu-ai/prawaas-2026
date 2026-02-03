@@ -9,11 +9,11 @@
                 <input type="text" name="search" class="form-control" placeholder="Search RSVPs..." value="{{ request('search') }}">
             </div>
             <div class="col-md-3">
-                <select name="association_id" class="form-select">
-                    <option value="">All Associations</option>
-                    @foreach($associations as $association)
-                        <option value="{{ $association->id }}" {{ request('association_id') == $association->id ? 'selected' : '' }}>
-                            {{ $association->name }}
+                <select name="association_name" class="form-select">
+                    <option value="">All Organisation Types</option>
+                    @foreach($organizationTypes as $type)
+                        <option value="{{ $type }}" {{ request('association_name') == $type ? 'selected' : '' }}>
+                            {{ $type }}
                         </option>
                     @endforeach
                 </select>
@@ -127,7 +127,7 @@
             <div class="d-flex justify-content-end">
                 <form method="GET" action="" class="me-3">
                     <input type="hidden" name="search" value="{{ request('search') }}">
-                    <input type="hidden" name="association_id" value="{{ request('association_id') }}">
+                    <input type="hidden" name="association_name" value="{{ request('association_name') }}">
                     <input type="hidden" name="date_from" value="{{ request('date_from') }}">
                     <input type="hidden" name="date_to" value="{{ request('date_to') }}">
                     <select name="per_page" class="form-select form-select-sm" onchange="this.form.submit()">
