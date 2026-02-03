@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\QueryException;
 
 return new class extends Migration
 {
@@ -11,18 +12,30 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Add foreign key from sponsorships to invoices
+        // Add foreign key from sponsorships to invoices (skip if already exists - errno 121 duplicate key)
         if (Schema::hasTable('sponsorships') && Schema::hasTable('invoices')) {
-            Schema::table('sponsorships', function (Blueprint $table) {
-                $table->foreign('invoice_id')->references('id')->on('invoices')->onDelete('cascade');
-            });
+            try {
+                Schema::table('sponsorships', function (Blueprint $table) {
+                    $table->foreign('invoice_id')->references('id')->on('invoices')->onDelete('cascade');
+                });
+            } catch (QueryException $e) {
+                if (($e->errorInfo[1] ?? null) !== 121) {
+                    throw $e;
+                }
+            }
         }
 
-        // Add foreign key from invoices to sponsorships
+        // Add foreign key from invoices to sponsorships (skip if already exists)
         if (Schema::hasTable('invoices') && Schema::hasTable('sponsorships')) {
-            Schema::table('invoices', function (Blueprint $table) {
-                $table->foreign('sponsorship_id')->references('id')->on('sponsorships')->onDelete('cascade');
-            });
+            try {
+                Schema::table('invoices', function (Blueprint $table) {
+                    $table->foreign('sponsorship_id')->references('id')->on('sponsorships')->onDelete('cascade');
+                });
+            } catch (QueryException $e) {
+                if (($e->errorInfo[1] ?? null) !== 121) {
+                    throw $e;
+                }
+            }
         }
     }
 

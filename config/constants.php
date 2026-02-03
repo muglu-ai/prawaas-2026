@@ -1,24 +1,24 @@
 <?php
 
-const MAIL_FROM_NAME = 'Bengaluru Tech Summit 2026';
-const APP_NAME = 'Bengaluru Tech Summit 2026';
-const APP_NAME_SHORT = 'BTS 2026';
-const EVENT_NAME = 'Bengaluru Tech Summit';
+const MAIL_FROM_NAME = 'Prawaas 2026';
+const APP_NAME = 'Prawaas 2026';
+const APP_NAME_SHORT = 'Prawaas 2026';
+const EVENT_NAME = 'Prawaas 2026';
 const EVENT_YEAR = '2026';
-const SHORT_NAME = 'BTS';
+const SHORT_NAME = 'Prawaas';
 
 
 // TIN number prefix: event short name (SHORT_NAME), year, EXH, then 6-digit random number will be appended in code.
 const TIN_NO_PREFIX = SHORT_NAME . '-' . EVENT_YEAR . '-EXH-';
 
 const PIN_NO_PREFIX = 'PRN-' . SHORT_NAME . '-' . EVENT_YEAR . '-EXHP-';
-const EVENT_WEBSITE = 'https://www.bengalurutechsummit.com';
+const EVENT_WEBSITE = 'https://www.prawaas.com';
 //event dates
 const EVENT_DATE_START = '19-11-2026';
 const EVENT_DATE_END = '21-11-2026';
-const EVENT_VENUE = 'Bengaluru International Exhibition Centre (BIEC), Bengaluru, India';
+const EVENT_VENUE = 'Helipad Exhibition Centre (HEC), Gandhinagar, Gujarat';
 
-const APP_URL = 'https://bengalurutechsummit.com/bts-2026/public';
+const APP_URL = 'https://prawaas.com/prawaas-2026/public';
 const SHELL_SCHEME_RATE = 14000; // per sqm
 const SHELL_SCHEME_RATE_USD = 175; // per sqm
 const RAW_SPACE_RATE = 13000; // per sqm
@@ -33,24 +33,24 @@ const GROUP_DISCOUNT_RATE = 10; // 10% group discount for 4+ delegates
 const GROUP_DISCOUNT_MIN_DELEGATES = 4; // Minimum delegates required for group discount
 const POSTER_BASE_AMOUNT_INR = 3500;
 const POSTER_BASE_AMOUNT_USD = 50;
-const SOC_LINKEDIN = 'https://in.linkedin.com/company/bengaluru-tech-summit';
-const SOC_TWITTER = 'https://twitter.com/blrtechsummit';
-const SOC_FACEBOOK = 'https://www.facebook.com/BengaluruTechSummit';
-const SOC_INSTAGRAM = 'https://www.instagram.com/blrtechsummit/';
-const SOC_YOUTUBE = 'https://www.youtube.com/@bengalurutechsummit/streams';
+const SOC_LINKEDIN = 'https://www.linkedin.com/company/prawaasboci/';
+const SOC_TWITTER = 'https://x.com/prawaasboci/';
+const SOC_FACEBOOK = 'https://www.facebook.com/PrawaasBoci?mibextid=LQQJ4d';
+const SOC_INSTAGRAM = 'https://www.instagram.com/prawaas4.0/?igsh=cW91ZTJ1MXIyeHNy';
+const SOC_YOUTUBE = 'https://www.youtube.com/Prawaas';
 const ORGANIZER_NAME = 'MM Activ Sci-Tech Communications PVT LTD';
 define('ORGANIZER_ADDRESS', !empty($_ENV['ORGANIZER_ADDRESS'])
     ? $_ENV['ORGANIZER_ADDRESS']
     : 'No.11/3, NITON, Block C, 2nd Floor, Palace Road, <br>Bengaluru - 560001, Karnataka, India');
 const FAVICON_APPLE = 'https://www.bengalurutechsummit.com/apple-touch-icon.png';
 const FAVICON = 'https://www.bengalurutechsummit.com/favicon-32x32.png';
-const FAVICON_16 = 'https://www.bengalurutechsummit.com/favicon-16x16.png';
+const FAVICON_16 = 'https://prawaas.com/favicon-32x32.png';
 const ORGANIZER_PHONE = '+91-8069328400';
-const ORGANIZER_EMAIL = 'enquiry@bengalurutechsummit.com';
+const ORGANIZER_EMAIL = 'enquiry@prawaas.com';
 const ORGANIZER_WEBSITE = 'https://mmactiv.in/';
 const ORGANIZER_LOGO = 'https://www.mmactiv.in/images/mma.jpg';
-const EVENT_LOGO = 'https://bengalurutechsummit.com/web/it_forms/images/logo2026.png';
-const EVENT_FAVICON = 'https://www.bengalurutechsummit.com/favicon-16x16.png';
+const EVENT_LOGO = 'https://prawaas.com/img/logo-5a.png';
+const EVENT_FAVICON = 'https://prawaas.com/apple-touch-icon.png';
 
 const EXTRA_REQUIREMENTS_ACTIVE = false; //true or false
 
@@ -62,7 +62,7 @@ const LATE_REGISTRATION_DEADLINE = '2026-11-19'; // last
 //custom registration link for exhibitors
 const EXHIBITOR_REGISTRATION_LINK = 'https://www.bengalurutechsummit.com/web/it_forms/enquiry.php';
 
-const GUIDE_LINK = 'https://bengalurutechsummit.com/pdf/BTS-Exhibitor-Portal-Guide.pdf';
+const GUIDE_LINK = '';
 
 const GST_API_URL = 'https://my.gstzen.in/api/gstin-validator/';
 const GST_API_KEY = '5479841c-b3ff-42ba-90bf-cb9866f52321';
@@ -117,7 +117,7 @@ return [
         'youtube' => SOC_YOUTUBE,
     ],
     'EVENT_FAVICON' => EVENT_FAVICON,
-    'TERMS_URL' => 'https://www.bengalurutechsummit.com/privacy-policy.php',
+    'TERMS_URL' => 'https://prawaas.com/privacy-policy.php',
     //Database connection
     'DB_HOST' => 'localhost',
     'DB_PORT' => '3306',
@@ -216,29 +216,26 @@ return [
     'hosted_url' => APP_URL,
     'HOSTED_URL' => APP_URL,
     'sectors' => [
-        'Startup',
-        'Information Technology',
-        'Electronics',
-        'Semiconductor',
-        'Telecommunication',
-        'Cybersecurity',
-        'Artificial Intelligence',
-        'Cloud Services',
-        'E-Commerce',
-        'Automation',
-        'AVGC',
-        'Space Tech',
-        'MobilityTech',
-        'Infrastructure',
-        'Biotech',
-        'Agritech',
-        'Medtech',
-        'Fintech',
-        'Healthtech',
-        'Edutech',
-        'Biotechnology',
-        'Academia & University (not for Student Only Faculty and HOD)',
-        'Others',
+        'OEMs & Body Builders',
+        'Aggregators',
+        'Technology & Infotainment',
+        'Accessories',
+        'Paint & Glass',
+        'Tyres',
+        'Component',
+        'BFSI & Fintech',
+        'Electric Mobility',
+        'After Market',
+        'Tourism',
+        'Central Government',
+        'Tours and Travels',
+        'State Gov, STUs And SPVs',
+        'Car Mfg.',
+        'AC',
+        'Oil & Lube',
+        'Seats',
+        'Start Up Pavilion',
+        'Transport Dep',
     ],
     'organization_types' => [
         'Startup',

@@ -12,8 +12,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Update the default value for gst_required to '0' (No)
-        DB::statement("ALTER TABLE poster_registration_demos MODIFY COLUMN gst_required ENUM('0', '1') DEFAULT '0'");
+        if (Schema::hasTable('poster_registration_demos') && Schema::hasColumn('poster_registration_demos', 'gst_required')) {
+            DB::statement("ALTER TABLE poster_registration_demos MODIFY COLUMN gst_required ENUM('0', '1') DEFAULT '0'");
+        }
     }
 
     /**
@@ -21,7 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Revert to default '1' (Yes)
-        DB::statement("ALTER TABLE poster_registration_demos MODIFY COLUMN gst_required ENUM('0', '1') DEFAULT '1'");
+        if (Schema::hasTable('poster_registration_demos') && Schema::hasColumn('poster_registration_demos', 'gst_required')) {
+            DB::statement("ALTER TABLE poster_registration_demos MODIFY COLUMN gst_required ENUM('0', '1') DEFAULT '1'");
+        }
     }
 };
