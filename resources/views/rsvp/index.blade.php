@@ -31,11 +31,11 @@
             </div>
             <div class="col-md-2">
                 <label class="form-label small">Association</label>
-                <select name="association_id" class="form-select">
-                    <option value="">All</option>
-                    @foreach($associations as $association)
-                        <option value="{{ $association->id }}" {{ request('association_id') == $association->id ? 'selected' : '' }}>
-                            {{ $association->name }}
+                <select name="association_name" class="form-select">
+                    <option value="">All Organisation Types</option>
+                    @foreach($organizationTypes as $type)
+                        <option value="{{ $type }}" {{ request('association_name') == $type ? 'selected' : '' }}>
+                            {{ $type }}
                         </option>
                     @endforeach
                 </select>

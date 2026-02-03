@@ -214,15 +214,15 @@
             <!-- Your Association / Organisation Type -->
             <div class="form-section">
                 <label class="form-label">Your Association / Organisation Type <span class="required">*</span></label>
-                <select name="association_id" id="association_id" class="form-select" required>
+                <select name="association_name" id="association_name" class="form-select" required>
                     <option value="">Select Association Name</option>
-                    @foreach($associations ?? [] as $association)
-                        <option value="{{ $association->id }}" {{ old('association_id') == $association->id ? 'selected' : '' }}>
-                            {{ $association->name }}
+                    @foreach($organizationTypes ?? [] as $type)
+                        <option value="{{ $type }}" {{ old('association_name') == $type ? 'selected' : '' }}>
+                            {{ $type }}
                         </option>
                     @endforeach
                 </select>
-                @error('association_id')
+                @error('association_name')
                     <div class="error-message">{{ $message }}</div>
                 @enderror
             </div>

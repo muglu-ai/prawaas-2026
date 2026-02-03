@@ -6,7 +6,6 @@ use App\Models\Rsvp;
 use App\Models\Events;
 use App\Models\Country;
 use App\Models\ExportLog;
-use App\Models\Ticket\TicketAssociation;
 use App\Mail\RsvpConfirmationMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -29,8 +28,8 @@ class RsvpController extends Controller
         // Get all countries from database
         $countries = Country::orderBy('name')->get(['id', 'name', 'code']);
 
-        // Get active associations
-        $associations = TicketAssociation::where('is_active', true)->orderBy('name')->get();
+        // Get organization types from constants
+        $organizationTypes = config('constants.organization_types', []);
 
         // Get pre-filled data from query params (for event-specific RSVPs)
         $eventIdentity = $request->query('event_identity', '');
@@ -41,7 +40,7 @@ class RsvpController extends Controller
         return view('rsvp.form', compact(
             'event',
             'countries',
-            'associations',
+            'organizationTypes',
             'eventIdentity',
             'rsvpLocation',
             'eventDate',
@@ -73,7 +72,7 @@ class RsvpController extends Controller
             'mob' => 'required|string|max:20|regex:/^[0-9]+$/',
             'city' => 'required|string|max:100',
             'country' => 'required|string|max:100',
-            'association_id' => 'required|exists:ticket_associations,id',
+            'association_name' => 'required|string|max:255',
             'comment' => 'nullable|string|max:2000',
             'event_identity' => 'nullable|string|max:255',
             'rsvp_location' => 'nullable|string|max:255',
@@ -90,15 +89,10 @@ class RsvpController extends Controller
             'mob.regex' => 'Contact number must contain only numbers.',
             'city.required' => 'City is required.',
             'country.required' => 'Country is required.',
-            'association_id.required' => 'Please select your Association/Organisation Type.',
-            'association_id.exists' => 'Invalid association selected.',
+            'association_name.required' => 'Please select your Association/Organisation Type.',
         ]);
 
         try {
-            // Get association name
-            $association = TicketAssociation::find($validated['association_id']);
-            $associationName = $association ? $association->name : null;
-
             // Prepare full name with title
             $fullName = $validated['name'];
             if (!empty($validated['title'])) {
@@ -129,8 +123,8 @@ class RsvpController extends Controller
                 'ttime' => $validated['ttime'] ?? null,
                 'event_identity' => $validated['event_identity'] ?? null,
                 'rsvp_location' => $validated['rsvp_location'] ?? null,
-                'association_id' => $validated['association_id'],
-                'association_name' => $associationName,
+                'association_id' => null,
+                'association_name' => $validated['association_name'],
                 'source_url' => $request->fullUrl(),
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->userAgent(),
@@ -236,7 +230,7 @@ class RsvpController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Rsvp::with(['event', 'association']);
+        $query = Rsvp::with(['event']);
 
         // Search functionality
         $search = $request->get('search', '');
@@ -253,9 +247,9 @@ class RsvpController extends Controller
             });
         }
 
-        // Filter by association
-        if ($request->has('association_id') && $request->association_id !== '') {
-            $query->where('association_id', $request->association_id);
+        // Filter by association name
+        if ($request->has('association_name') && $request->association_name !== '') {
+            $query->where('association_name', $request->association_name);
         }
 
         // Filter by date range
@@ -282,10 +276,10 @@ class RsvpController extends Controller
         $rsvps = $query->paginate($perPage);
         $rsvps->appends($request->query());
 
-        // Get filter options
-        $associations = TicketAssociation::where('is_active', true)->orderBy('name')->get();
+        // Get filter options - organization types from constants
+        $organizationTypes = config('constants.organization_types', []);
 
-        return view('rsvp.index', compact('rsvps', 'search', 'associations'));
+        return view('rsvp.index', compact('rsvps', 'search', 'organizationTypes'));
     }
 
     /**
@@ -293,7 +287,7 @@ class RsvpController extends Controller
      */
     public function show($id)
     {
-        $rsvp = Rsvp::with(['event', 'association'])->findOrFail($id);
+        $rsvp = Rsvp::with(['event'])->findOrFail($id);
 
         return view('rsvp.show', compact('rsvp'));
     }
@@ -336,7 +330,7 @@ class RsvpController extends Controller
      */
     public function export(Request $request)
     {
-        $query = Rsvp::with(['association']);
+        $query = Rsvp::query();
 
         // Apply same filters as index method
         $search = $request->get('search', '');
@@ -351,8 +345,8 @@ class RsvpController extends Controller
             });
         }
 
-        if ($request->has('association_id') && $request->association_id !== '') {
-            $query->where('association_id', $request->association_id);
+        if ($request->has('association_name') && $request->association_name !== '') {
+            $query->where('association_name', $request->association_name);
         }
         if ($request->has('date_from') && $request->date_from) {
             $query->whereDate('created_at', '>=', $request->date_from);
