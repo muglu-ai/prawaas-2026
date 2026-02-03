@@ -148,41 +148,6 @@
             </div>
         </div>
 
-        {{-- Event Details Banner --}}
-        @php
-            $rsvpConfig = config('constants.rsvp', []);
-            $rsvpEventDate = $rsvpConfig['event_date'] ?? null;
-            $rsvpEventTime = $rsvpConfig['event_time'] ?? '';
-            $rsvpVenueName = $rsvpConfig['venue_name'] ?? '';
-            $rsvpVenueAddress = $rsvpConfig['venue_address'] ?? '';
-        @endphp
-        
-        <div class="event-banner">
-            <div class="event-date-time-bar">
-                <div class="date-item">
-                    <i class="fas fa-calendar-alt"></i>
-                    @if($rsvpEventDate)
-                        {{ \Carbon\Carbon::parse($rsvpEventDate)->format('l, F jS, Y') }}
-                    @else
-                        Event Date TBA
-                    @endif
-                </div>
-                <div class="time-item">
-                    <i class="far fa-clock"></i>
-                    {{ $rsvpEventTime ?: 'Time TBA' }}
-                </div>
-            </div>
-            <div class="event-venue-bar">
-                <i class="fas fa-map-marker-alt"></i>
-                <div class="venue-text">
-                    @if($rsvpVenueName)
-                        <strong>{{ $rsvpVenueName }}</strong><br>
-                    @endif
-                    {{ $rsvpVenueAddress }}
-                </div>
-            </div>
-        </div>
-
         {{-- Section Header --}}
         <div class="mb-4">
             <h4 class="section-title"><i class="fas fa-user"></i> Provide Your Information</h4>
