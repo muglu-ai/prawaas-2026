@@ -67,9 +67,9 @@ class RsvpController extends Controller
             'name' => 'required|string|max:255',
             'org' => 'required|string|max:255',
             'desig' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
+            'email' => 'required|email|max:255|unique:rsvps,email',
             'phone_country_code' => 'nullable|string|max:10',
-            'mob' => 'required|string|max:20|regex:/^[0-9]+$/',
+            'mob' => 'required|string|min:6|max:20|regex:/^[0-9]+$/',
             'city' => 'required|string|max:100',
             'country' => 'required|string|max:100',
             'association_name' => 'required|string|max:255',
@@ -81,13 +81,17 @@ class RsvpController extends Controller
             'event_id' => 'nullable|exists:events,id',
         ], [
             'name.required' => 'Name is required.',
+            
             'org.required' => 'Organization/Institution/University name is required.',
             'desig.required' => 'Designation is required.',
             'email.required' => 'Email ID is required.',
             'email.email' => 'Please enter a valid email address.',
+            'email.unique' => 'This email has already been registered for RSVP.',
             'mob.required' => 'Contact number is required.',
+            'mob.min' => 'Contact number must be at least 6 digits.',
             'mob.regex' => 'Contact number must contain only numbers.',
             'city.required' => 'City is required.',
+            
             'country.required' => 'Country is required.',
             'association_name.required' => 'Please select your Association/Organisation Type.',
         ]);
