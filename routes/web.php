@@ -1195,6 +1195,8 @@ Route::post('/rsvp', [RsvpController::class, 'submit'])->name('rsvp.submit');
 Route::middleware(['auth', Auth::class])->prefix('admin/rsvps')->name('admin.rsvps.')->group(function () {
     Route::get('/', [RsvpController::class, 'index'])->name('index');
     Route::get('/export', [RsvpController::class, 'export'])->name('export');
+    Route::get('/preview/{id}', [RsvpController::class, 'previewEmail'])->name('preview');
+    Route::post('/resend/{id}', [RsvpController::class, 'resendEmail'])->name('resend');
     Route::get('/{id}', [RsvpController::class, 'show'])->name('show');
     Route::delete('/{id}', [RsvpController::class, 'destroy'])->name('destroy');
 });

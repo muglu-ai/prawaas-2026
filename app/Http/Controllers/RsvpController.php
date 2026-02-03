@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Rsvp;
 use App\Models\Events;
 use App\Models\Country;
+use App\Models\ExportLog;
 use App\Models\Ticket\TicketAssociation;
+use App\Mail\RsvpConfirmationMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 
 class RsvpController extends Controller
 {
@@ -296,7 +299,40 @@ class RsvpController extends Controller
     }
 
     /**
-     * Export RSVPs to CSV
+     * Preview RSVP confirmation email (admin)
+     */
+    public function previewEmail($id)
+    {
+        $rsvp = Rsvp::with(['event', 'association'])->findOrFail($id);
+        $mailable = new RsvpConfirmationMail($rsvp);
+
+        return $mailable->render();
+    }
+
+    /**
+     * Resend RSVP confirmation email (admin)
+     */
+    public function resendEmail(Request $request, $id)
+    {
+        $rsvp = Rsvp::with(['event', 'association'])->findOrFail($id);
+
+        try {
+            Mail::to($rsvp->email)->send(new RsvpConfirmationMail($rsvp));
+            Log::info('RSVP confirmation email resent by admin', ['rsvp_id' => $rsvp->id, 'email' => $rsvp->email]);
+            $message = 'Confirmation email sent successfully to ' . $rsvp->email;
+        } catch (\Exception $e) {
+            Log::error('RSVP resend email failed', ['rsvp_id' => $rsvp->id, 'error' => $e->getMessage()]);
+            return redirect()->back()->with('error', 'Failed to send email: ' . $e->getMessage());
+        }
+
+        if ($request->ajax() || $request->wantsJson()) {
+            return response()->json(['success' => true, 'message' => $message]);
+        }
+        return redirect()->back()->with('success', $message);
+    }
+
+    /**
+     * Export RSVPs to CSV with log
      */
     public function export(Request $request)
     {
@@ -318,11 +354,29 @@ class RsvpController extends Controller
         if ($request->has('association_id') && $request->association_id !== '') {
             $query->where('association_id', $request->association_id);
         }
+        if ($request->has('date_from') && $request->date_from) {
+            $query->whereDate('created_at', '>=', $request->date_from);
+        }
+        if ($request->has('date_to') && $request->date_to) {
+            $query->whereDate('created_at', '<=', $request->date_to);
+        }
 
         $rsvps = $query->orderBy('created_at', 'desc')->get();
-
-        // Generate CSV
         $filename = 'rsvps_' . date('Y-m-d_H-i-s') . '.csv';
+
+        // Log export
+        ExportLog::logExport(
+            'rsvps',
+            $rsvps->count(),
+            $filename,
+            [
+                'search' => $search,
+                'association_id' => $request->association_id,
+                'date_from' => $request->date_from,
+                'date_to' => $request->date_to,
+            ]
+        );
+
         $headers = [
             'Content-Type' => 'text/csv',
             'Content-Disposition' => 'attachment; filename="' . $filename . '"',
@@ -331,9 +385,9 @@ class RsvpController extends Controller
         $callback = function() use ($rsvps) {
             $file = fopen('php://output', 'w');
             fputcsv($file, [
-                'Sr No', 'Name', 'Organization', 'Designation', 'Email', 
-                'Mobile', 'City', 'Country', 'Participant', 'Comment', 
-                'Date', 'Time', 'Event Identity', 'RSVP Location', 
+                'Sr No', 'Name', 'Organization', 'Designation', 'Email',
+                'Mobile', 'City', 'Country', 'Participant', 'Comment',
+                'Date', 'Time', 'Event Identity', 'RSVP Location',
                 'Association Name', 'Created At'
             ]);
 

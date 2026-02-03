@@ -2,11 +2,31 @@
 @section('title', 'RSVP Details')
 @section('content')
 <div class="container">
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show">{{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    @endif
+    @if(session('error'))
+        <div class="alert alert-danger alert-dismissible fade show">{{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    @endif
+
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>RSVP Details</h2>
-        <a href="{{ route('admin.rsvps.index') }}" class="btn btn-secondary">
-            <i class="fas fa-arrow-left me-1"></i> Back to List
-        </a>
+        <div class="d-flex gap-2">
+            <a href="{{ route('admin.rsvps.preview', $rsvp->id) }}" class="btn btn-secondary" target="_blank">
+                <i class="fas fa-envelope-open-text me-1"></i> Email Preview
+            </a>
+            <form action="{{ route('admin.rsvps.resend', $rsvp->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Resend confirmation email to {{ $rsvp->email }}?');">
+                @csrf
+                <button type="submit" class="btn btn-warning"><i class="fas fa-paper-plane me-1"></i> Resend Email</button>
+            </form>
+            <a href="{{ route('admin.rsvps.index') }}" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left me-1"></i> Back to List
+            </a>
+        </div>
     </div>
 
     <div class="card">
@@ -128,9 +148,7 @@
             <form action="{{ route('admin.rsvps.destroy', $rsvp->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this RSVP?');">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger">
-                    <i class="fas fa-trash me-1"></i> Delete RSVP
-                </button>
+                <button type="submit" class="btn btn-danger"><i class="fas fa-trash me-1"></i> Delete RSVP</button>
             </form>
         </div>
     </div>

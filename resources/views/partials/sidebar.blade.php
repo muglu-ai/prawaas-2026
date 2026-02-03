@@ -613,6 +613,12 @@
                 </a>
             </li>
             --}}
+            <li class="nav-item">
+                <a href="{{ route('admin.rsvps.index') }}" class="nav-link text-dark" data-tooltip="RSVP Registrations">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span class="nav-link-text ms-1 ps-1 text-dark">RSVP Registrations</span>
+                </a>
+            </li>
             @if ($subRole === 'visitor')
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#visitorsSubRole" class="nav-link text-dark"
