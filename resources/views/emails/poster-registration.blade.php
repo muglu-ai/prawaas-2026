@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="icon" href="https://www.bengalurutechsummit.com/favicon-16x16.png" type="image/vnd.microsoft.icon"/>
+    <link rel="icon" href="{{ config('constants.FAVICON') }}" type="image/vnd.microsoft.icon"/>
     <title>{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }} - Poster Registration</title>
 </head>
 <body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.5; color: #333333; max-width: 650px; margin: 0 auto; padding: 10px; background-color: #f5f5f5; font-size: 14px;">
