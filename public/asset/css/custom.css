@@ -1,5 +1,5 @@
-.form-header{
-    background: linear-gradient(90deg, #9F3694 0%, #5962B0 100% ) !important;
+.form-header {
+    background: #1F2A44 !important;
 }
 
 .form-container {padding: 0 !important;}
@@ -26,7 +26,7 @@
 	height: 17px !important;
 }
 .progress-fill {
-    background: linear-gradient(90deg, #9F3694 0%, #5962B0 100%) !important;
+    background: #1F2A44;
 }
 h5.border-bottom {
     color: #000000 !important;
@@ -50,30 +50,29 @@ h5.border-bottom i {
 .step-connector {
     background: #7054A7 !important;    
 }
-.step-number {
+/* .step-number {
     border: 3px solid #7B2FEB !important;
-}
+} */
 .step-label {
     color: #121212 !important;
 }
 .step-item.active .step-number {
-    background: linear-gradient(180deg, #D2175D 14.61%, #7B2FEB 373.21%) !important;
-    border-color: #c81980 !important;    
+    background: #4FC3F7;  
 }
 .step-item.active .step-label {
-    color: #D9237D !important;
+    color: #4FC3F7 !important;
 }
 
 .section-title i {
-    background: -webkit-linear-gradient(#9F3694, #5962B0) !important;
-    -webkit-background-clip: text !important;
+    background: #4FC3F7;
+        -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
 }
 .step-item.completed ~ .step-connector, .step-item.active ~ .step-connector {
-    background: #7054A7 !important;
+    background: #4FC3F7;
 }
 .price-table .total-row td {
-    background: linear-gradient(to right, #4D2FB2, #0E21A0) !important;
+    background: #4FC3F7;
 }
 .section-title {
     border-color: #4D2FB2 !important;
@@ -84,19 +83,20 @@ h5.border-bottom i {
 }
 .step-number {
     /* background: #fff !important; */
-    border: 3px solid #7B2FEB !important;
+    color: #4FC3F7 !important;
 }
 .step-item.active .step-number {
-    background: linear-gradient(180deg, #D2175D 14.61%, #7B2FEB 373.21%) !important;
-    border-color: #c81980 !important;
+    background: #4FC3F7;
 }
+.step-item.active .step-label {
+    color: #4FC3F7 !important;
+}
+
 .section-title {
 	border-bottom: 2px solid var(--primary-color) !important;
 }
 .section-title i {
-    background: -webkit-linear-gradient(#9F3694, #5962B0) !important; 
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important ;
+    background: #4FC3F7 !important;
 }
 
 
@@ -110,9 +110,7 @@ h5.border-bottom i {
 }
 
 
-.form-header {
-    background: #1F2A44 !important;
-}
+
 .progress-fill {
     background: #1F2A44;
 }
