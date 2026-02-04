@@ -122,6 +122,13 @@ h5.border-bottom i {
     background: #4FC3F7;
 }
 
+.step-item.active .step-label {
+    color: #4FC3F7 !important;
+}
+.step-item.active .step-number {
+    background: #4FC3F7;
+}
+
 .step-item.completed ~ .step-connector, .step-item.active ~ .step-connector {
     background: #4FC3F7 !important;
 }

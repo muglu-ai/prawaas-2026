@@ -251,7 +251,7 @@
             background: var(--progress-active);
             border-color: var(--progress-active);
             color: white;
-            box-shadow: 0 4px 15px rgba(11, 94, 215, 0.4);
+            
             transform: scale(1.05);
         }
 
