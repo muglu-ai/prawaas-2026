@@ -111,8 +111,23 @@ class RsvpController extends Controller
                 $participant .= ', ' . $validated['org'];
             }
 
+            // Generate unique reference: PRWS5-RSVP-{6 digits}
+            $uniqueRef = null;
+            for ($attempt = 0; $attempt < 20; $attempt++) {
+                $num = str_pad((string) random_int(0, 999999), 6, '0', STR_PAD_LEFT);
+                $candidate = 'PRWS5-RSVP-' . $num;
+                if (!Rsvp::where('unique_reference', $candidate)->exists()) {
+                    $uniqueRef = $candidate;
+                    break;
+                }
+            }
+            if (!$uniqueRef) {
+                throw new \RuntimeException('Could not generate unique RSVP reference.');
+            }
+
             // Create RSVP
             $rsvp = Rsvp::create([
+                'unique_reference' => $uniqueRef,
                 'event_id' => $validated['event_id'] ?? null,
                 'title' => $validated['title'] ?? null,
                 'name' => $fullName,
@@ -164,9 +179,8 @@ class RsvpController extends Controller
                 // Don't fail the submission if email fails
             }
 
-            return redirect()->route('rsvp.thankyou')
-                ->with('success', 'Thank you for your RSVP! We look forward to seeing you.')
-                ->with('rsvp_id', $rsvp->id);
+            return redirect()->route('rsvp.thankyou', ['ref' => $rsvp->unique_reference])
+                ->with('success', 'Thank you for your RSVP! We look forward to seeing you.');
 
         } catch (\Exception $e) {
             Log::error('RSVP submission error', [
@@ -181,22 +195,25 @@ class RsvpController extends Controller
     }
 
     /**
-     * Show thank you page
+     * Show thank you page. Requires valid unique reference (ref) in query string.
+     * If ref is missing or not found, redirect to RSVP registration form.
      */
     public function thankyou(Request $request)
     {
-        $rsvp = null;
-        
-        // First try to get from session (after form submission)
-        if (session('rsvp_id')) {
-            $rsvp = Rsvp::find(session('rsvp_id'));
+        $ref = $request->query('ref');
+
+        if (empty($ref)) {
+            return redirect()->route('rsvp.form')
+                ->with('message', 'Please submit the RSVP form to view your confirmation.');
         }
-        
-        // If no session, check for query parameter (for testing/direct access)
-        if (!$rsvp && $request->has('id')) {
-            $rsvp = Rsvp::find($request->get('id'));
+
+        $rsvp = Rsvp::where('unique_reference', $ref)->first();
+
+        if (!$rsvp) {
+            return redirect()->route('rsvp.form')
+                ->with('message', 'Invalid or expired RSVP reference. Please submit the form again.');
         }
-        
+
         return view('rsvp.thankyou', compact('rsvp'));
     }
 

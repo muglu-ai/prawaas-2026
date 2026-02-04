@@ -128,7 +128,11 @@
     </div>
 
     <div class="form-body">
-       
+        @if(session('message'))
+            <div class="alert alert-info mb-4" role="alert">
+                <i class="fas fa-info-circle me-2"></i>{{ session('message') }}
+            </div>
+        @endif
 
         <!-- Progress Indicator -->
         <div class="progress-container">

@@ -10,6 +10,7 @@ class Rsvp extends Model
     protected $table = 'rsvps';
 
     protected $fillable = [
+        'unique_reference',
         'event_id',
         'title',
         'name',

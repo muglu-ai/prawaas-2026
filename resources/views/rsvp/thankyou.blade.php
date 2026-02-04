@@ -33,8 +33,19 @@
     .thank-intro {
         color: #334155;
         font-size: 1rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
     }
+    .rsvp-reference {
+        font-size: 0.85rem;
+        color: #64748b;
+        margin-bottom: 1.5rem;
+        padding: 0.75rem 1rem;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        display: inline-block;
+    }
+    .rsvp-reference strong { color: #1e3a5f; font-family: ui-monospace, monospace; letter-spacing: 0.02em; }
     .details-card {
         background: #f8fafc;
         border-radius: 10px;
@@ -198,6 +209,11 @@
             @endif
             Thank you for submitting your RSVP for the <strong>Prawaas 5.0 Curtain Raiser</strong>.
         </div>
+        @if(isset($rsvp) && $rsvp && $rsvp->unique_reference)
+            <div class="rsvp-reference">
+                Your RSVP reference: <strong>{{ $rsvp->unique_reference }}</strong>
+            </div>
+        @endif
 
         <div class="details-card">
             <div class="details-card-title">Curtain Raiser Details</div>
