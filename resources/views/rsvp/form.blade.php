@@ -122,7 +122,7 @@
 
 @section('content')
 <div class="form-card">
-    <div class="form-header" style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);">
+    <div class="form-header">
         <h2><i class="fas fa-calendar-check me-2"></i>RSVP Form for the Prawaas 5.0 Curtain Raiser</h2>
         <p>{{ $event->event_name ?? config('constants.EVENT_NAME', 'Event') }} {{ $event->event_year ?? config('constants.EVENT_YEAR', date('Y')) }}</p>
     </div>
