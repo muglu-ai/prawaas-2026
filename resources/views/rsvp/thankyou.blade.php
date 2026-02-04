@@ -203,7 +203,8 @@
 
         <div class="thank-intro">
             @if(isset($rsvp) && $rsvp && $rsvp->name)
-                Dear {{ $rsvp->name }},
+                Dear {{ $rsvp->name }}, <br>
+                
             @else
                 Dear Attendee, <br>
             @endif
