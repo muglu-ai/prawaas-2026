@@ -12,9 +12,9 @@
         overflow: hidden;
     }
     .form-header {
-        background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+        background: #1e3a5f;
         color: #fff;
-        padding: 2rem 1.5rem 1.5rem 1.5rem;
+        padding: 2rem 1.5rem;
         text-align: center;
     }
     .form-header h2 {
@@ -24,70 +24,77 @@
     }
     .form-header p {
         margin-bottom: 0;
-        color: #ffd700;
-        font-size: 1.1rem;
+        color: rgba(255,255,255,0.9);
+        font-size: 1rem;
     }
     .form-body {
-        padding: 2rem 1.5rem 1.5rem 1.5rem;
+        padding: 2rem 1.5rem;
+    }
+    .thank-intro {
+        color: #334155;
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
     }
     .details-card {
         background: #f8fafc;
-        border-radius: 12px;
+        border-radius: 10px;
         border: 1px solid #e2e8f0;
         margin-bottom: 1.5rem;
-        overflow: hidden;
+        padding: 1.25rem 1.5rem;
     }
-    .details-card-header {
-        background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
-        color: #ffd700;
+    .details-card-title {
+        font-size: 0.8rem;
         font-weight: 600;
-        font-size: 1.1rem;
-        padding: 1rem 1.5rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #64748b;
+        margin-bottom: 1rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid #e2e8f0;
     }
     .date-time-row {
-        background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
-        color: #fff;
-        padding: 1rem 1.5rem;
         display: flex;
         align-items: center;
-        justify-content: center;
-        gap: 2rem;
+        gap: 1.5rem;
         flex-wrap: wrap;
+        margin-bottom: 1rem;
+        color: #475569;
+        font-size: 0.95rem;
     }
     .date-time-item {
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        font-weight: 500;
-        font-size: 1rem;
+    }
+    .date-time-item i {
+        color: #64748b;
+        width: 1.1rem;
     }
     .venue-section {
-        background: #fff;
-        padding: 1.5rem;
+        color: #334155;
     }
     .venue-item {
         display: flex;
         gap: 1rem;
-        margin-bottom: 1.25rem;
+        margin-bottom: 1rem;
     }
     .venue-item:last-child { margin-bottom: 0; }
     .venue-icon {
         width: 36px;
         height: 36px;
-        border-radius: 10px;
+        border-radius: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.1rem;
+        font-size: 1rem;
+        background: #e2e8f0;
+        color: #64748b;
+        flex-shrink: 0;
     }
-    .venue-icon.location { background: #fee2e2; color: #dc2626; }
-    .venue-icon.note { background: #dbeafe; color: #2563eb; }
     .venue-label {
         font-size: 0.75rem;
         text-transform: uppercase;
+        letter-spacing: 0.05em;
         color: #64748b;
         font-weight: 600;
         margin-bottom: 0.25rem;
@@ -97,59 +104,62 @@
     .note-text {
         color: #475569;
         font-size: 0.9rem;
-        background: #f1f5f9;
-        padding: 0.75rem 1rem;
-        border-radius: 8px;
-        border-left: 3px solid #3b82f6;
+        padding: 0.75rem 0;
+        border-left: 3px solid #cbd5e1;
+        padding-left: 1rem;
+        margin-left: 0.25rem;
     }
     .contact-section { margin-bottom: 1.5rem; }
     .contact-title {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         font-weight: 600;
         color: #334155;
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
         display: flex;
         align-items: center;
         gap: 0.5rem;
     }
-    .contact-title i { color: #3b82f6; }
+    .contact-title i { color: #64748b; }
     .contact-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
     .contact-card {
-        background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
-        border-radius: 12px;
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
         padding: 1.25rem;
-        color: white;
+        color: #334155;
     }
     .contact-card-label {
         font-size: 0.7rem;
         text-transform: uppercase;
-        color: #ffd700;
+        letter-spacing: 0.05em;
+        color: #64748b;
         margin-bottom: 0.5rem;
         font-weight: 600;
     }
-    .contact-card-name { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.5rem; }
-    .contact-card-info { font-size: 0.85rem; opacity: 0.9; line-height: 1.6; }
-    .contact-card-info a { color: #93c5fd; text-decoration: none; }
+    .contact-card-name { font-weight: 600; font-size: 0.95rem; color: #1e293b; margin-bottom: 0.5rem; }
+    .contact-card-info { font-size: 0.85rem; color: #475569; line-height: 1.6; }
+    .contact-card-info a { color: #1e3a5f; text-decoration: none; }
     .contact-card-info a:hover { text-decoration: underline; }
     .footer-signature {
-        background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+        background: #f1f5f9;
         padding: 1.25rem 1.5rem;
         text-align: center;
-        color: white;
+        color: #475569;
+        border-top: 1px solid #e2e8f0;
     }
-    .footer-signature .thank-text { color: #ffd700; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.25rem; }
-    .footer-signature .team-text { font-size: 1rem; }
+    .footer-signature .thank-text { font-weight: 600; font-size: 0.95rem; color: #334155; margin-bottom: 0.25rem; }
+    .footer-signature .team-text { font-size: 0.9rem; }
     @media (max-width: 576px) {
         .form-card { margin: 1rem 0.25rem; }
-        .form-header { padding: 1.5rem 1rem 1rem 1rem; }
-        .form-body { padding: 1.25rem 1rem 1rem 1rem; }
-        .date-time-row { flex-direction: column; gap: 0.75rem; }
+        .form-header { padding: 1.5rem 1rem; }
+        .form-body { padding: 1.25rem 1rem; }
+        .date-time-row { flex-direction: column; gap: 0.5rem; }
         .contact-grid { grid-template-columns: 1fr; }
-        .footer-signature { padding: 1rem 1rem; }
+        .footer-signature { padding: 1rem; }
     }
 </style>
 @endpush
@@ -157,60 +167,60 @@
 
 @section('content')
 <div class="form-card">
-    <div class="form-header">
-       
-        <p style="text-align: left;">
+    <div class="form-header" style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);">
+        <h2><i class="fas fa-calendar-check me-2"></i>RSVP Form for the Prawaas 5.0 Curtain Raiser</h2>
+        <p>{{ config('constants.EVENT_NAME', 'Event') }} {{ config('constants.EVENT_YEAR', date('Y')) }}</p>
+    </div>
+    <div class="form-body">
+        <!-- Progress Indicator (Confirmation complete) -->
+        <div class="progress-container">
+            <div class="step-indicator">
+                <div class="step-item completed">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Your Information</div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item active">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Confirmation</div>
+                </div>
+            </div>
+            <div class="progress-bar-custom">
+                <div class="progress-fill" style="width: 100%;"></div>
+            </div>
+        </div>
+
+        <div class="thank-intro">
             @if(isset($rsvp) && $rsvp && $rsvp->name)
                 Dear {{ $rsvp->name }},
             @else
-                Dear Attendee,
+                Dear Attendee, <br>
             @endif
-        </p>
-        <div style="color: #fff; font-size: 1rem; margin-top: 0.5rem; text-align: left;">Thank you for submitting your RSVP for the <strong>Prawaas 5.0 Curtain Raiser</strong>.</div>
-    </div>
-    <div class="form-body">
-        @if(session('success'))
-            <div class="alert alert-success mb-4">
-                {{ session('success') }}
-            </div>
-        @endif
+            Thank you for submitting your RSVP for the <strong>Prawaas 5.0 Curtain Raiser</strong>.
+        </div>
+
         <div class="details-card">
-            <div class="details-card-header">
-                <i class="fas fa-star"></i>
-                Curtain Raiser Details
+            <div class="details-card-title">Curtain Raiser Details</div>
+            <div class="date-time-row">
+                <span class="date-time-item"><i class="fas fa-calendar-alt"></i> Monday, 16 February 2026</span>
+                <span class="date-time-item"><i class="fas fa-clock"></i> 6:00 PM onwards</span>
             </div>
-            <div class="date-time-row" style="justify-content: flex-start;">
-                            <div class="date-time-item">
-                                <i class="fas fa-calendar-alt"></i>
-                                Monday, 16 February 2026
-                            </div>
-                            <div class="date-time-item">
-                                <i class="fas fa-clock"></i>
-                                6:00 PM onwards
-                            </div>
-                        </div>
             <div class="venue-section">
                 <div class="venue-item">
-                    <div class="venue-icon location">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
+                    <div class="venue-icon"><i class="fas fa-map-marker-alt"></i></div>
                     <div>
                         <div class="venue-label">Venue</div>
                         <div class="venue-name">Inspiration Hall, Crowne Plaza Ahmedabad City Centre</div>
-                        <div class="venue-address">S.G. Highway, Near Shapath-V, Ahmedabad – 380015</div>
+                        <div class="venue-address">S.G. Highway, Near Shapath-V, Ahmedabad - 380015</div>
                     </div>
                 </div>
                 <div class="venue-item">
-                    <div class="venue-icon note">
-                        <i class="fas fa-info"></i>
-                    </div>
-                    <div>
-                       
-                        <div class="note-text">The function will be followed by high tea.</div>
-                    </div>
+                    <div class="venue-icon"><i class="fas fa-info-circle"></i></div>
+                    <div class="note-text">The function will be followed by high tea.</div>
                 </div>
             </div>
         </div>
+
         <div class="contact-section">
             <div class="contact-title">
                 <i class="fas fa-phone-alt"></i>

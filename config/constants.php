@@ -121,6 +121,8 @@ return [
     ],
     'EVENT_FAVICON' => EVENT_FAVICON,
     'TERMS_URL' => 'https://prawaas.com/privacy-policy.php',
+    'PRIVACY_POLICY_LINK' => PRIVACY_POLICY_LINK,
+    'CONTACT_US_LINK' => CONTACT_US_LINK,
     //Database connection
     'DB_HOST' => 'localhost',
     'DB_PORT' => '3306',

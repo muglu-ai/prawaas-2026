@@ -245,7 +245,6 @@
                        inputmode="numeric"
                        required>
                 <input type="hidden" name="phone_country_code" id="phone_country_code">
-                <div class="form-hint text-primary">+Country Code-Contact Number(xxx-xxxxxxxxx)</div>
                 @error('mob')
                     <div class="error-message">{{ $message }}</div>
                 @enderror
