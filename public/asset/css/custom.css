@@ -108,3 +108,26 @@ h5.border-bottom i {
 .test {
     background: linear-gradient(to right, #FFD700, #DAA520) !important;
 }
+
+
+.form-header {
+    background: #1F2A44 !important;
+}
+.progress-fill {
+    background: #1F2A44;
+}
+
+.step-item.active .step-label {
+    color: #4FC3F7 !important;
+}
+.step-item.active .step-number {
+    background: #4FC3F7;
+}
+
+.step-item.completed ~ .step-connector, .step-item.active ~ .step-connector {
+    background: #4FC3F7 !important;
+}
+
+.section-title i {
+    background: #4FC3F7 !important;
+}
