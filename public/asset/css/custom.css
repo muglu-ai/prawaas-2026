@@ -9,9 +9,8 @@
     border-radius: 6px !important;
 }
 .step-item.active .step-number {
-    border-color: #c81980 !important;
+    border-color: #4FC3F7 !important;
     color: white !important;
-    background: linear-gradient(180deg, #D2175D 14.61%, #7B2FEB 373.21%) !important;
 }
 .step-number {
     border: 3px solid #7B2FEB !important;    
