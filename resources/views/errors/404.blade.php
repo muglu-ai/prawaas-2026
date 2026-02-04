@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 - Page Not Found | {{ config('constants.EVENT_NAME', 'Event') }}</title>
     
-    <link rel="icon" href="https://www.bengalurutechsummit.com/favicon-16x16.png" type="image/vnd.microsoft.icon" />
+    <link rel="icon" href="{{ config('constants.FAVICON') }}" type="image/vnd.microsoft.icon" />
     
     <!-- Fonts and Icons -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />

@@ -10,7 +10,7 @@
     <title>{{ config('constants')['EVENT_NAME'] }} {{ config('constants')['EVENT_YEAR'] }}</title>
     <link
         rel="icon"
-        href="https://www.bengalurutechsummit.com/favicon-16x16.png"
+        href="{{ config('constants.FAVICON') }}"
         type="image/vnd.microsoft.icon"
     />
     <!--     Fonts and icons     -->

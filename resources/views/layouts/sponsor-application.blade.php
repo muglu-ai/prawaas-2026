@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="icon" href="https://www.bengalurutechsummit.com/favicon-16x16.png" type="image/vnd.microsoft.icon" />
+    <link rel="icon" href="{{ config('constants.FAVICON') }}" type="image/vnd.microsoft.icon" />
     <title>
         {{ config('constants.EVENT_NAME') . ' ' . config('constants.EVENT_YEAR') . ' Admin Panel' }}
     </title>

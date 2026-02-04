@@ -7,7 +7,7 @@
     <title>{{ config('constants.EVENT_NAME') }} - Exhibitor Directory</title>
 
     <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
-    <link rel="icon" href="https://www.bengalurutechsummit.com/favicon-16x16.png" type="image/vnd.microsoft.icon" />
+    <link rel="icon" href="{{ config('constants.FAVICON') }}" type="image/vnd.microsoft.icon" />
 
     <!-- Bootstrap 5 -->
     <link
