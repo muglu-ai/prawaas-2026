@@ -727,8 +727,8 @@
                 @hasSection('footer-links')
                     @yield('footer-links')
                 @else
-                    <a href="https://www.bengalurutechsummit.com/privacy-policy.php">Privacy Policy</a>
-                    <a href="https://www.bengalurutechsummit.com/contact.php">Contact Us</a>
+                    <a href="{{ config('constants.PRIVACY_POLICY_LINK') }}" target="_blank">Privacy Policy</a>
+                    <a href="{{ config('constants.CONTACT_US_LINK') }}" target="_blank">Contact Us</a>
                 @endif
             </div>
         </div>

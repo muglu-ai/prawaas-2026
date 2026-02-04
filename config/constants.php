@@ -69,6 +69,9 @@ const GST_API_KEY = '5479841c-b3ff-42ba-90bf-cb9866f52321';
 
 const TICKET_REGISTRATION_LINK = 'https://bengalurutechsummit.com/conference.php#delegate-tariff';
 
+const PRIVACY_POLICY_LINK = 'https://prawaas.com/privacy-policy.php';
+
+const CONTACT_US_LINK = 'https://prawaas.com/contact.php';
 //define("DEFAULT_REGISTRATION_LINK", route('register.form'));
 const DEFAULT_REGISTRATION_LINK = null;
 const PAYPAL_MODE = "live";
