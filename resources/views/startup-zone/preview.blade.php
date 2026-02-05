@@ -156,38 +156,35 @@
 @endpush
 
 @section('content')
-<div class="container py-3">
-    {{-- Step Indicator in white card - same as payment page --}}
-    <div class="row mb-4">
-        <div class="col-12">
-            <div class="card shadow-sm bg-white rounded-3 border-0">
-                <div class="card-body py-4">
-                    <div class="step-indicator">
-                        <div class="step-item completed">
-                            <div class="step-number">1</div>
-                            <div class="step-label">Exhibitor Details</div>
-                        </div>
-                        <div class="step-connector"></div>
-                        <div class="step-item active">
-                            <div class="step-number">2</div>
-                            <div class="step-label">Preview Details</div>
-                        </div>
-                        <div class="step-connector"></div>
-                        <div class="step-item">
-                            <div class="step-number">3</div>
-                            <div class="step-label">Payment</div>
-                        </div>
-                    </div>
+<div class="form-card">
+    {{-- Form Header - same style as form and payment --}}
+    <div class="form-header" style="background: linear-gradient(135deg, #0B5ED7 0%, #084298 100%);">
+        <h2><i class="fas fa-eye"></i> Preview Your Registration</h2>
+        <p>{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}</p>
+    </div>
+
+    <div class="form-body">
+        {{-- Step Indicator --}}
+        <div class="progress-container">
+            <div class="step-indicator">
+                <div class="step-item completed">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Exhibitor Details</div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item active">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Preview Details</div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Payment</div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-12">
-            <h2 class="text-center mb-4">Preview Your Registration</h2>
-            
-            @if(isset($application))
+        @if(isset($application))
                 {{-- Application Preview (After Draft Restoration) --}}
                 <div class="card shadow-sm mb-4">
                     <div class="card-header bg-success text-white">
@@ -630,7 +627,6 @@
             </div>
         </div>
     </div>
-</div>
 
 @if(!isset($application))
 <script>

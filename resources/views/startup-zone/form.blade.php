@@ -19,39 +19,34 @@
 @endpush
 
 @section('content')
-<div class="container py-3">
-    {{-- Step Indicator in white card - same as payment/preview page --}}
-    <div class="row mb-4">
-        <div class="col-12">
-            <div class="card shadow-sm bg-white rounded-3 border-0">
-                <div class="card-body py-4">
-                    <div class="step-indicator">
-                        <div class="step-item active">
-                            <div class="step-number">1</div>
-                            <div class="step-label">Exhibitor Details</div>
-                        </div>
-                        <div class="step-connector"></div>
-                        <div class="step-item">
-                            <div class="step-number">2</div>
-                            <div class="step-label">Preview Details</div>
-                        </div>
-                        <div class="step-connector"></div>
-                        <div class="step-item">
-                            <div class="step-number">3</div>
-                            <div class="step-label">Payment</div>
-                        </div>
-                    </div>
+<div class="form-card">
+    {{-- Form Header - same style on form, preview, payment --}}
+    <div class="form-header" style="background: linear-gradient(135deg, #0B5ED7 0%, #084298 100%);">
+        <h2><i class="fas fa-building"></i> Startup Zone Registration Form</h2>
+        <p>{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}</p>
+    </div>
+
+    <div class="form-body">
+        {{-- Step Indicator --}}
+        <div class="progress-container">
+            <div class="step-indicator">
+                <div class="step-item active">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Exhibitor Details</div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Preview Details</div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Payment</div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-12">
-            <h2 class="text-center mb-4"><i class="fas fa-building"></i> Startup Zone Registration Form</h2>
-
-            <div class="form-card">
-                <div class="form-body">
         {{-- Auto-save Indicator --}}
         <div id="autoSaveIndicator" class="alert alert-info d-none" style="position: fixed; top: 20px; right: 20px; z-index: 9999; min-width: 150px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); padding: 12px 20px; border-radius: 5px; transition: opacity 0.3s ease;">
             <i class="fas fa-spinner fa-spin"></i> <span>Saving...</span>
@@ -584,9 +579,6 @@
                     </button>
                 </div>
         </form>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
