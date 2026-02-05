@@ -42,11 +42,11 @@ const ORGANIZER_NAME = 'MM Activ Sci-Tech Communications PVT LTD';
 define('ORGANIZER_ADDRESS', !empty($_ENV['ORGANIZER_ADDRESS'])
     ? $_ENV['ORGANIZER_ADDRESS']
     : 'No.11/3, NITON, Block C, 2nd Floor, Palace Road, <br>Bengaluru - 560001, Karnataka, India');
-const FAVICON_APPLE = 'https://www.bengalurutechsummit.com/apple-touch-icon.png';
+const FAVICON_APPLE = 'https://prawaas.com/favicon-32x32.png';
 const FAVICON = 'https://prawaas.com/favicon-32x32.png';
 const FAVICON_16 = 'https://prawaas.com/favicon-32x32.png';
 const ORGANIZER_PHONE = '+91-8069328400';
-const ORGANIZER_EMAIL = 'enquiry@prawaas.com';
+const ORGANIZER_EMAIL = 'secretariat@prawaas.com';
 const ORGANIZER_WEBSITE = 'https://mmactiv.in/';
 const ORGANIZER_LOGO = 'https://www.mmactiv.in/images/mma.jpg';
 const EVENT_LOGO = 'https://prawaas.com/img/logo-5a.png';
@@ -60,14 +60,14 @@ const SEND_CREDENTIALS_AFTER_PAYMENT = false; // Set to true to send credentials
 const LATE_REGISTRATION_DEADLINE = '2026-11-19'; // last
 
 //custom registration link for exhibitors
-const EXHIBITOR_REGISTRATION_LINK = 'https://www.bengalurutechsummit.com/web/it_forms/enquiry.php';
+const EXHIBITOR_REGISTRATION_LINK = 'https://prawaas.com/prawaas_forms/enquiry.php';
 
 const GUIDE_LINK = '';
 
 const GST_API_URL = 'https://my.gstzen.in/api/gstin-validator/';
 const GST_API_KEY = '5479841c-b3ff-42ba-90bf-cb9866f52321';
 
-const TICKET_REGISTRATION_LINK = 'https://bengalurutechsummit.com/conference.php#delegate-tariff';
+const TICKET_REGISTRATION_LINK = 'https://prawaas.com/international-conference.php';
 
 const PRIVACY_POLICY_LINK = 'https://prawaas.com/privacy-policy.php';
 
