@@ -157,23 +157,27 @@
 
 @section('content')
 <div class="container py-3">
-    {{-- Step Indicator --}}
+    {{-- Step Indicator in white card - same as payment page --}}
     <div class="row mb-4">
         <div class="col-12">
-            <div class="step-indicator">
-                <div class="step-item completed">
-                    <div class="step-number">1</div>
-                    <div class="step-label">Exhibitor Details</div>
-                </div>
-                <div class="step-connector"></div>
-                <div class="step-item active">
-                    <div class="step-number">2</div>
-                    <div class="step-label">Preview Details</div>
-                </div>
-                <div class="step-connector"></div>
-                <div class="step-item">
-                    <div class="step-number">3</div>
-                    <div class="step-label">Payment</div>
+            <div class="card shadow-sm bg-white rounded-3 border-0">
+                <div class="card-body py-4">
+                    <div class="step-indicator">
+                        <div class="step-item completed">
+                            <div class="step-number">1</div>
+                            <div class="step-label">Exhibitor Details</div>
+                        </div>
+                        <div class="step-connector"></div>
+                        <div class="step-item active">
+                            <div class="step-number">2</div>
+                            <div class="step-label">Preview Details</div>
+                        </div>
+                        <div class="step-connector"></div>
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <div class="step-label">Payment</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
