@@ -1,11 +1,11 @@
 <?php
 
-const MAIL_FROM_NAME = 'Prawaas';
-const APP_NAME = 'Prawaas';
-const APP_NAME_SHORT = 'Prawaas';
+const MAIL_FROM_NAME = 'Prawaas 5.0';
+const APP_NAME = 'Prawaas 5.0';
+const APP_NAME_SHORT = 'PRWS';
 const EVENT_NAME = 'Prawaas';
 const EVENT_YEAR = '2026';
-const SHORT_NAME = 'Prawaas';
+const SHORT_NAME = 'PRWS';
 
 
 // TIN number prefix: event short name (SHORT_NAME), year, EXH, then 6-digit random number will be appended in code.
@@ -43,7 +43,7 @@ define('ORGANIZER_ADDRESS', !empty($_ENV['ORGANIZER_ADDRESS'])
     ? $_ENV['ORGANIZER_ADDRESS']
     : 'No.11/3, NITON, Block C, 2nd Floor, Palace Road, <br>Bengaluru - 560001, Karnataka, India');
 const FAVICON_APPLE = 'https://www.bengalurutechsummit.com/apple-touch-icon.png';
-const FAVICON = 'https://www.bengalurutechsummit.com/favicon-32x32.png';
+const FAVICON = 'https://prawaas.com/favicon-32x32.png';
 const FAVICON_16 = 'https://prawaas.com/favicon-32x32.png';
 const ORGANIZER_PHONE = '+91-8069328400';
 const ORGANIZER_EMAIL = 'enquiry@prawaas.com';
