@@ -9,9 +9,8 @@
   <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js"></script>
 @endpush
-{{--
+
 @section('header-title')
-    <h1>Startup Registration</h1>
+    <h1>Startup Zone</h1>
     <p>{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}</p>
 @endsection
---}}
