@@ -20,8 +20,7 @@
         <table border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto;">
             <tr>
                 <td colspan="5" style="text-align: center;">
-                    <img src="{{config('constants.event_logo')}}" alt="{{config('constants.EVENT_NAME')}}" style="max-width: 300px;">
-                    <p style="margin: 5px 0 10px 0;">{{ config('constants.EVENT_NAME') }}</p>
+                    <img src="{{ config('constants.EMAILER_HEADER_LOGO') }}" alt="{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}" style="max-width: 100%; width: 100%; height: auto; display: block; border: 0;">
                 </td>
             </tr>
             <tr>

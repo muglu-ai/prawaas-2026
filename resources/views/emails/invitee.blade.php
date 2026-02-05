@@ -19,8 +19,8 @@
                         <td align="center" style="padding-bottom: 30px;">
                             <table cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto;">
                                 <tr>
-                                    <div style="width: 25%; display: flex; justify-content: center; align-items: center;">
-                                        <img src="{{ config('constants.event_logo') }}" alt="{{ config('constants.event_logo') }}">
+                                    <div style="width: 100%;">
+                                        <img src="{{ config('constants.EMAILER_HEADER_LOGO') }}" alt="{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}" style="max-width: 100%; width: 100%; height: auto; display: block; border: 0;">
                                     </div>
                                 </tr>
                             </table>

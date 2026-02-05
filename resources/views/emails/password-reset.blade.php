@@ -7,9 +7,7 @@
 <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 5px; padding: 20px;">
     <tr>
         <td align="center" style="padding-bottom: 20px;">
-            <!-- Logo Placeholder -->
-                <img src="{{config('constants.event_logo')}}" alt="{{config('constants.EVENT_NAME')}}" style="max-width: 150px; height: auto;">
-               <div class="logo-text" style="margin-top: 10px;">{{config('constants.EVENT_NAME')}} {{config('constants.EVENT_YEAR')}}</div>
+            <img src="{{ config('constants.EMAILER_HEADER_LOGO') }}" alt="{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}" style="max-width: 100%; width: 100%; height: auto; display: block; border: 0;">
         </td>
     </tr>
     <tr>

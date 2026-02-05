@@ -14,10 +14,8 @@
                     <!-- Header -->
                     <tr>
                         <td style="padding: 30px 30px 20px; background-color: #ffffff; border-radius: 8px 8px 0 0; border-bottom: 2px solid #1a237e;">
-                            <div style="text-align: left; margin-bottom: 20px;">
-                                @if(config('constants.event_logo'))
-                                <img src="{{ config('constants.event_logo') }}" alt="{{ config('constants.EVENT_NAME') }}" style="max-width: 200px; height: auto; display: block;">
-                                @endif
+                            <div style="margin-bottom: 20px;">
+                                <img src="{{ config('constants.EMAILER_HEADER_LOGO') }}" alt="{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}" style="max-width: 100%; width: 100%; height: auto; display: block; border: 0;">
                             </div>
                             
                             <div style="text-align: center; padding-top: 15px; border-top: 1px solid #e9ecef;">
