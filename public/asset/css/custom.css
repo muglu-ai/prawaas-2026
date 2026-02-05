@@ -63,7 +63,7 @@ h5.border-bottom i {
 }
 
 .section-title i {
-    background: #4FC3F7;
+    /* background: #4FC3F7; */
         -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
 }

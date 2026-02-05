@@ -361,10 +361,9 @@ class StartupZoneController extends Controller
                 $companyName = 'company';
             }
             
-            // Generate filename: CompanyName_YYYYMMDD_HHMMSS.pdf
+            // Generate filename: CompanyName_YYYYMMDD_HHMMSS.pdf (always .pdf extension)
             $timestamp = now()->format('Ymd_His');
-            $extension = $file->getClientOriginalExtension();
-            $filename = $companyName . '_' . $timestamp . '.' . $extension;
+            $filename = $companyName . '_' . $timestamp . '.pdf';
             
             $path = $file->storeAs('startup-zone/certificates', $filename, 'public');
             $formData['certificate_path'] = $path;
@@ -891,10 +890,9 @@ class StartupZoneController extends Controller
                     $companyName = 'company';
                 }
                 
-                // Generate filename: CompanyName_YYYYMMDD_HHMMSS.pdf
+                // Generate filename: CompanyName_YYYYMMDD_HHMMSS.pdf (always .pdf extension)
                 $timestamp = now()->format('Ymd_His');
-                $extension = $file->getClientOriginalExtension();
-                $filename = $companyName . '_' . $timestamp . '.' . $extension;
+                $filename = $companyName . '_' . $timestamp . '.pdf';
                 
                 $path = $file->storeAs('startup-zone/certificates', $filename, 'public');
                 $draft->certificate_path = $path;
@@ -2646,10 +2644,9 @@ class StartupZoneController extends Controller
                 $companyName = 'company';
             }
             
-            // Generate filename: CompanyName_YYYYMMDD_HHMMSS.pdf
+            // Generate filename: CompanyName_YYYYMMDD_HHMMSS.pdf (always .pdf extension)
             $timestamp = now()->format('Ymd_His');
-            $extension = $file->getClientOriginalExtension();
-            $filename = $companyName . '_' . $timestamp . '.' . $extension;
+            $filename = $companyName . '_' . $timestamp . '.pdf';
             
             $path = $file->storeAs('startup-zone/certificates', $filename, 'public');
             $formData['certificate_path'] = $path;
