@@ -98,7 +98,7 @@ class MetroLeadsService
             'phone' => $enquiry->phone_full ?? ($enquiry->phone_country_code ? $enquiry->phone_country_code . '-' . $enquiry->phone_number : $enquiry->phone_number),
             'email' => $enquiry->email,
             'sector_d2f' => $enquiry->sector,
-            'event_source_28e' => 'Bengaluru Tech Summit 2026',
+            'event_source_28e' => config('constants.EVENT_NAME') . ' ' . config('constants.EVENT_YEAR'),
             'form_name' => 'Enquiry Form',
             'want_information_about_ffb' => $interests,
             'source_tags' => $enquiry->referral_source,

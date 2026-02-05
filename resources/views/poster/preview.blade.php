@@ -406,7 +406,7 @@
         <div class="panel">
             <div class="text-center mb-4">
                 <div style="font-family: 'Varela Round', sans-serif; font-size: 0.9rem; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">
-                    Bengaluru Tech Summit 2026
+                    {{config('constants.EVENT_NAME')}} {{config('constants.EVENT_YEAR')}}
                 </div>
                 <h1 class="h3 fw-bold mb-1">Preview</h1>
                 <div class="text-secondary mb-3">Step 2 of 3 — Review and submit.</div>

@@ -153,7 +153,7 @@
                         </label>
                         <input type="text" class="form-control" name="event_name" 
                                value="{{ old('event_name', $event->event_name) }}" required 
-                               placeholder="e.g., Bengaluru Tech Summit">
+                               placeholder="e.g., {{config('constants.EVENT_NAME')}} {{config('constants.EVENT_YEAR')}}">
                     </div>
                     <div class="col-md-6 mb-4">
                         <label class="form-label">

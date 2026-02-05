@@ -1,6 +1,6 @@
 @extends('layouts.registration')
 
-@section('title', 'Poster Registration - ' . config('constants.EVENT_NAME', 'Bengaluru Tech Summit') . ' ' . config('constants.EVENT_YEAR', '2026'))
+@section('title', 'Poster Registration - ' . config('constants.EVENT_NAME') . ' ' . config('constants.EVENT_YEAR'))
 
 @push('head-links')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.15.0/build/css/intlTelInput.css">
@@ -658,7 +658,7 @@
         <div class="panel">
             <div class="text-center mb-4">
                 <div style="font-family: 'Varela Round', sans-serif; font-size: 0.9rem; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">
-                    Bengaluru Tech Summit 2026
+                    {{config('constants.EVENT_NAME')}} {{config('constants.EVENT_YEAR')}}
                 </div>
                 <h1 class="h3 fw-bold mb-1">Poster Registration</h1>
                 <div class="text-secondary mb-3">Step 1 of 3 — Fill details and continue to preview.</div>

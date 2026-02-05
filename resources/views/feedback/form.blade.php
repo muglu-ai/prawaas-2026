@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Feedback - Bengaluru Tech Summit</title>
+    <title>Event Feedback - {{config('constants.EVENT_NAME')}} {{config('constants.EVENT_YEAR')}}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
@@ -462,9 +462,9 @@
             <!-- Header Section -->
             <div class="header-section">
                 <div class="logo-container">
-                    <img src="https://bengalurutechsummit.com/img/logo-BTS-25-N.png" alt="Bengaluru Tech Summit Logo" class="img-fluid">
+                    <img src="{{config('constants.EVENT_LOGO')}}" alt="{{config('constants.EVENT_NAME')}} {{config('constants.EVENT_YEAR')}} Logo" class="img-fluid">
                 </div>
-                <div class="event-name">Bengaluru Tech Summit</div>
+                <div class="event-name">{{config('constants.EVENT_NAME')}} {{config('constants.EVENT_YEAR')}}</div>
                 <h1 class="header-title">
                     <i class="bi bi-chat-heart-fill"></i>
                     <span>Share Your Feedback</span>
