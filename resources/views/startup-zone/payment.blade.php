@@ -131,7 +131,7 @@
 <div class="form-card">
     {{-- Form Header - same style as form and preview --}}
     <div class="form-header" style="background: linear-gradient(135deg, #0B5ED7 0%, #084298 100%);">
-        <h2><i class="fas fa-credit-card"></i> Payment</h2>
+        <h2><i class="fas fa-credit-card"></i> Startup Zone Payment Page</h2>
         <p>{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}</p>
     </div>
 

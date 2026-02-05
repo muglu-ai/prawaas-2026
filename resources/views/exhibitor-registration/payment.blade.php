@@ -154,7 +154,7 @@
 
     <div class="row">
         <div class="col-12">
-            <h2 class="text-center mb-4">Payment</h2>
+            <h2 class="text-center mb-4">Exhibitor Registration Payment Page</h2>
 
           
         
