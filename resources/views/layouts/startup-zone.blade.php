@@ -11,6 +11,5 @@
 @endpush
 
 @section('header-title')
-    <h1>Startup Zone</h1>
     {{-- <p>{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}</p> --}}
 @endsection
