@@ -102,10 +102,16 @@
 </style>
 @endpush
 @section('content')
-<div class="container py-3">
-    {{-- Step Indicator - Same as preview page --}}
-    <div class="row mb-4">
-        <div class="col-12">
+<div class="form-card">
+    {{-- Form Header - same style as RSVP (dark navy banner with title + subtitle) --}}
+    <div class="form-header" style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);">
+        <h2><i class="fas fa-building me-2"></i> Exhibitor Registration Form</h2>
+        <p>{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}</p>
+    </div>
+
+    <div class="form-body">
+        {{-- Step Indicator --}}
+        <div class="progress-container">
             <div class="step-indicator">
                 <div class="step-item active">
                     <div class="step-number">1</div>
@@ -123,15 +129,8 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-12">
-            <h2 class="text-center mb-4"><i class="fas fa-building"></i> Exhibitor Registration Form</h2>
-
-            <div class="form-card">
-                <div class="form-body">
-    {{-- Auto-save Indicator --}}
+        {{-- Auto-save Indicator --}}
     <div id="autoSaveIndicator" class="alert alert-info d-none" style="position: fixed; top: 20px; right: 20px; z-index: 9999;">
         <i class="fas fa-spinner fa-spin"></i> Saving...
     </div>
@@ -658,9 +657,6 @@
                     </button>
         </div>
     </form>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
