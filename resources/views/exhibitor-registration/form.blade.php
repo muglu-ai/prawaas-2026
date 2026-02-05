@@ -104,13 +104,13 @@
 @section('content')
 <div class="form-card">
     {{-- Form Header - same style as RSVP (dark navy banner with title + subtitle) --}}
-    <div class="form-header" style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);">
-        <h2><i class="fas fa-building me-2"></i> Exhibitor Registration Form</h2>
+    <div class="form-header">
+        <h2><i class="fas fa-building"></i> Exhibitor Registration Form</h2>
         <p>{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}</p>
     </div>
 
     <div class="form-body">
-        {{-- Step Indicator --}}
+    {{-- Step Indicator --}}
         <div class="progress-container">
             <div class="step-indicator">
                 <div class="step-item active">
@@ -126,9 +126,8 @@
                 <div class="step-item">
                     <div class="step-number">3</div>
                     <div class="step-label">Payment</div>
-                </div>
-            </div>
         </div>
+    </div>
 
         {{-- Auto-save Indicator --}}
     <div id="autoSaveIndicator" class="alert alert-info d-none" style="position: fixed; top: 20px; right: 20px; z-index: 9999;">
