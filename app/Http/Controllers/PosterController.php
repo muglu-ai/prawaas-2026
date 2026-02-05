@@ -2727,7 +2727,7 @@ class PosterController extends Controller
     {
         do {
             $randomNumber = str_pad((string) mt_rand(1, 999999), 6, '0', STR_PAD_LEFT);
-            $tinNo = 'TIN-BTS-2026-PSTR-' . $randomNumber;
+            $tinNo = 'TIN-' . config('constants.SHORT_NAME') . '-' . config('constants.EVENT_YEAR') . '-PSTR-' . $randomNumber;
         } while (
             \App\Models\PosterRegistration::where('tin_no', $tinNo)->exists() ||
             \App\Models\PosterRegistrationDemo::where('tin_no', $tinNo)->exists()

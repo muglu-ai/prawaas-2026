@@ -96,8 +96,8 @@ return [
     'APP_URL' => APP_URL,
     'APP_NAME' => APP_NAME,
     'APP_NAME_SHORT' => SHORT_NAME,
-    'APPLICATION_ID_PREFIX' => 'TIN-BTS-2026-EXH-',
-    'SPONSORSHIP_ID_PREFIX' => 'TIN-BTS-2026-SPONSOR-',
+    'APPLICATION_ID_PREFIX' => 'TIN-' . SHORT_NAME . '-' . EVENT_YEAR . '-EXH-',
+    'SPONSORSHIP_ID_PREFIX' => 'TIN-' . SHORT_NAME . '-' . EVENT_YEAR . '-SPONSOR-',
     'TIN_NO_PREFIX' => TIN_NO_PREFIX,
     'PIN_NO_PREFIX' => PIN_NO_PREFIX,
     'TICKET_ORDER_PREFIX' => 'TIN-' . SHORT_NAME . '-' . EVENT_YEAR . '-TKT-',
@@ -316,7 +316,7 @@ return [
 
     // Admin Emails to receive notifications
     'admin_emails' => [
-        'to' => ['enquiry@bengalurutechsummit.com'],  // Primary recipient
+        'to' => ['secretariat@prawaas.com'],  // Primary recipient
         'bcc' => [    // BCC recipients
             'test.interlinks@gmail.com',
             'manish.sharma@interlinks.in'

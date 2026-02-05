@@ -36,7 +36,7 @@ class ExhibitorDirectoryReminder extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->subject('{{config('constants.EVENT_NAME')}} {{config('constants.EVENT_YEAR')}} — Action Required')
+        return $this->subject(config('constants.EVENT_NAME') . ' ' . config('constants.EVENT_YEAR') . ' — Action Required')
             ->view('emails.exhibitor.exhibitor-directory-reminder')
             ->with([
                 'loginEmail' => $this->loginEmail,
