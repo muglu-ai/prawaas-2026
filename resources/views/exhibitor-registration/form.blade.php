@@ -102,16 +102,10 @@
 </style>
 @endpush
 @section('content')
-<div class="form-card">
-    {{-- Form Header --}}
-    <div class="form-header">
-        <h2><i class="fas fa-building"></i> Exhibitor Registration Form</h2>
-        <p>{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}</p>
-    </div>
-
-    <div class="form-body">
-    {{-- Step Indicator --}}
-        <div class="progress-container">
+<div class="container py-3">
+    {{-- Step Indicator - Same as preview page --}}
+    <div class="row mb-4">
+        <div class="col-12">
             <div class="step-indicator">
                 <div class="step-item active">
                     <div class="step-number">1</div>
@@ -126,17 +120,17 @@
                 <div class="step-item">
                     <div class="step-number">3</div>
                     <div class="step-label">Payment</div>
+                </div>
+            </div>
         </div>
     </div>
 
-    {{-- Progress Bar --}}
-            <!-- <div class="progress-bar-custom" style="position: relative; display: flex; align-items: center;">
-                <div class="progress-fill" id="progressBar" style="width: 33%; position: relative; overflow: visible;">
-                    <span id="progressText" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); color: white; font-size: 0.75rem; font-weight: 600; white-space: nowrap; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">Step 1 of 3</span>
-            </div>
-        </div> -->
-    </div>
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-center mb-4"><i class="fas fa-building"></i> Exhibitor Registration Form</h2>
 
+            <div class="form-card">
+                <div class="form-body">
     {{-- Auto-save Indicator --}}
     <div id="autoSaveIndicator" class="alert alert-info d-none" style="position: fixed; top: 20px; right: 20px; z-index: 9999;">
         <i class="fas fa-spinner fa-spin"></i> Saving...
@@ -664,6 +658,9 @@
                     </button>
         </div>
     </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

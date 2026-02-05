@@ -426,43 +426,42 @@
 @endpush
 
 @section('poster-content')
-<div class="form-card">
-    {{-- Form Header --}}
-    <div class="form-header" style="background: linear-gradient(135deg, #0B5ED7 0%, #084298 100%);">
-        <h2><i class="fas fa-file-alt"></i> Poster Registration Form</h2>
-        <p>{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}</p>
-    </div>
-
-    <div class="form-body">
-        {{-- Step Indicator - Same style as delegate registration --}}
-        <div class="registration-progress mb-4">
-            <div class="progress-steps">
-                <!-- Step 1: Registration -->
-                <div class="progress-step active">
-                    <div class="step-circle">
-                        <span>1</span>
-                    </div>
-                    <div class="step-label">Registration Details</div>
+<div class="container py-3">
+    {{-- Step Indicator - Same as preview page --}}
+    <div class="registration-progress mb-4">
+        <div class="progress-steps">
+            <!-- Step 1: Registration (Active) -->
+            <div class="progress-step active">
+                <div class="step-circle">
+                    <span>1</span>
                 </div>
-                
-                <!-- Step 2: Preview -->
-                <div class="progress-step">
-                    <div class="step-circle">
-                        <span>2</span>
-                    </div>
-                    <div class="step-label">Review & Preview</div>
+                <div class="step-label">Registration Details</div>
+            </div>
+            
+            <!-- Step 2: Preview -->
+            <div class="progress-step">
+                <div class="step-circle">
+                    <span>2</span>
                 </div>
-                
-                <!-- Step 3: Payment -->
-                <div class="progress-step">
-                    <div class="step-circle">
-                        <span>3</span>
-                    </div>
-                    <div class="step-label">Payment</div>
+                <div class="step-label">Review & Preview</div>
+            </div>
+            
+            <!-- Step 3: Payment -->
+            <div class="progress-step">
+                <div class="step-circle">
+                    <span>3</span>
                 </div>
+                <div class="step-label">Payment</div>
             </div>
         </div>
+    </div>
 
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-center mb-4"><i class="fas fa-file-alt"></i> Poster Registration Form</h2>
+
+            <div class="form-card">
+                <div class="form-body">
         {{-- Auto-save Indicator --}}
         <div id="autoSaveIndicator" class="alert alert-info d-none" style="position: fixed; top: 20px; right: 20px; z-index: 9999; min-width: 150px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); padding: 12px 20px; border-radius: 5px;">
             <i class="fas fa-spinner fa-spin"></i> <span>Saving...</span>
@@ -783,6 +782,9 @@
                 </button>
             </div>
         </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
