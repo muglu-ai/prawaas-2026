@@ -90,9 +90,8 @@ class TicketPaymentController extends Controller
             }
         }
 
-        // Clear session data immediately when proceeding to payment
-        // This prevents user from going back to edit the same registration
-        session()->forget('ticket_registration_data');
+        // Session will be cleared only after order is successfully created (before redirect to lookup)
+        // so that on error we can redirect back to preview with data intact
 
         try {
             DB::beginTransaction();
@@ -443,9 +442,11 @@ class TicketPaymentController extends Controller
             }
 
             DB::commit();
-            
-            // Session already cleared at the start of payment initiation
-            // No need to clear again here
+
+            // Clear all ticket registration session data so form values don't persist and cause errors
+            // (e.g. if user goes back to register, or double-submit)
+            session()->forget('ticket_registration_data');
+            session()->forget('ticket_promocode');
 
             // Load registration category for display (may be null)
             $registrationCategory = null;
