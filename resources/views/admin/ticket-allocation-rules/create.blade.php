@@ -140,19 +140,9 @@
 
                 <div class="mb-3">
                     <label class="form-label">Ticket Allocations <span class="text-danger">*</span></label>
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <small class="text-muted">
-                            <strong>All ticket types are shown below.</strong> Select ticket types and specify count for each.
-                            <br><span class="text-info"><i class="fas fa-info-circle"></i> Use the filter toggle to show only exhibitor-only types if needed.</span>
-                        </small>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="filter_exhibitor_only" onchange="filterExhibitorOnly()">
-                            <label class="form-check-label" for="filter_exhibitor_only">
-                                Filter: Show only Exhibitor-Only
-                            </label>
-                        </div>
-                    </div>
-                    
+                    <p class="text-muted small mb-2">
+                        <strong>All ticket categories are shown below.</strong> Select ticket types and specify count for each.
+                    </p>
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead class="table-light">
@@ -203,23 +193,6 @@
                         <div class="text-danger small">{{ $message }}</div>
                     @enderror
                 </div>
-
-                <script>
-                function filterExhibitorOnly() {
-                    const filterCheckbox = document.getElementById('filter_exhibitor_only');
-                    const rows = document.querySelectorAll('.ticket-type-row');
-                    const showOnly = filterCheckbox.checked;
-                    
-                    rows.forEach(row => {
-                        const isExhibitorOnly = row.getAttribute('data-exhibitor-only') === '1';
-                        if (showOnly) {
-                            row.style.display = isExhibitorOnly ? '' : 'none';
-                        } else {
-                            row.style.display = '';
-                        }
-                    });
-                }
-                </script>
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
