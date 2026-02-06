@@ -6,10 +6,10 @@
 </head>
 <body style="margin: 0; padding: 0; background-color: #f4f4f4; font-family: Arial, sans-serif;">
 <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse; background-color: #ffffff;">
-    <!-- Header with logo -->
+    <!-- Header with emailer banner - flush, no gap -->
     <tr>
-        <td align="center" style="padding: 20px 0;">
-            <img src="https://www.mmactiv.in/images/semicon_logo.png" alt="Company Logo" width="200" style="display: block; border: 0;">
+        <td style="padding: 0; line-height: 0;">
+            <img src="{{ config('constants.EMAILER_HEADER_LOGO') }}" alt="{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}" style="max-width: 100%; width: 100%; height: auto; display: block; border: 0; vertical-align: bottom;">
         </td>
     </tr>
     <!-- Body content -->

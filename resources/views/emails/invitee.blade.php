@@ -13,17 +13,11 @@
             <td align="center" style="padding: 20px 0;">
                 <table role="presentation"
                     style="max-width: 600px; width: 100%; border-collapse: collapse; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                    <!-- Header -->
+                    <!-- Header - flush, no gap -->
                     <table width="100%" cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                        <td align="center" style="padding-bottom: 30px;">
-                            <table cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto;">
-                                <tr>
-                                    <div style="width: 100%;">
-                                        <img src="{{ config('constants.EMAILER_HEADER_LOGO') }}" alt="{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}" style="max-width: 100%; width: 100%; height: auto; display: block; border: 0;">
-                                    </div>
-                                </tr>
-                            </table>
+                        <td style="padding: 0; line-height: 0;">
+                            <img src="{{ config('constants.EMAILER_HEADER_LOGO') }}" alt="{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}" style="max-width: 100%; width: 100%; height: auto; display: block; border: 0; vertical-align: bottom;">
                         </td>
                     </tr>
                 </table>

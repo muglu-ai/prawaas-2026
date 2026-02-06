@@ -12,9 +12,9 @@
         <tr>
             <td>
                 <div role="article" aria-label="{{ config('constants.EVENT_NAME') }} Exhibitor Credentials" style="max-width: 700px; margin: 24px auto; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 6px 20px rgba(16, 24, 40, 0.08);">
-                    <!-- Header / Logo -->
-                    <div style="padding: 20px; text-align: left; background: #ffffff;">
-                        <img src="{{config('constants.event_logo')}}" alt="{{ config('constants.EVENT_NAME') }} Logo" style="height: 56px; display: block;"/>
+                    <!-- Header / Emailer Banner - flush with edges -->
+                    <div style="background: #ffffff;">
+                        <img src="{{ config('constants.EMAILER_HEADER_LOGO') }}" alt="{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}" style="max-width: 100%; width: 100%; height: auto; display: block; border: 0; vertical-align: bottom;"/>
                     </div>
 
                     <!-- Body -->

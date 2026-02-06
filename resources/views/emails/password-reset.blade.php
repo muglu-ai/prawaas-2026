@@ -6,8 +6,8 @@
 <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
 <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 5px; padding: 20px;">
     <tr>
-        <td align="center" style="padding-bottom: 20px;">
-            <img src="{{ config('constants.EMAILER_HEADER_LOGO') }}" alt="{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}" style="max-width: 100%; width: 100%; height: auto; display: block; border: 0;">
+        <td style="padding: 0; line-height: 0;">
+            <img src="{{ config('constants.EMAILER_HEADER_LOGO') }}" alt="{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}" style="max-width: 100%; width: 100%; height: auto; display: block; border: 0; vertical-align: bottom;">
         </td>
     </tr>
     <tr>

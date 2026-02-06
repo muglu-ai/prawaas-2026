@@ -79,11 +79,14 @@ class EmailPreviewController extends Controller
         // Get contact
         $contact = EventContact::where('application_id', $application->id)->first();
 
+        // Get billing detail (optional; view uses @if($billingDetail))
+        $billingDetail = \App\Models\BillingDetail::where('application_id', $application->id)->first();
+
         // Generate payment URL
         $paymentUrl = route('startup-zone.payment', $application->application_id);
 
         // Return the email view
-        return view('emails.exhibitor-registration', compact('application', 'invoice', 'contact', 'paymentUrl', 'sectorName'));
+        return view('emails.exhibitor-registration', compact('application', 'invoice', 'contact', 'billingDetail', 'paymentUrl', 'sectorName'));
     }
 
     /**

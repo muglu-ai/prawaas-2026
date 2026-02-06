@@ -20,9 +20,9 @@
                 <tbody>
                 <tr>
                     <td rowspan="3"><img
-                                src="{{config('constants.event_logo')}}"
-                                alt="{{config('constants.EVENT_NAME')}}"
-                                width="300"/></td>
+                                src="{{ config('constants.EMAILER_HEADER_LOGO') }}"
+                                alt="{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}"
+                                style="max-width: 100%; width: 100%; height: auto; display: block; border: 0;"/></td>
                 </tr>
                 </tbody>
             </table>

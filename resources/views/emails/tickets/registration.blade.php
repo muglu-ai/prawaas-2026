@@ -13,12 +13,14 @@
     @endphp
 
     <div style="background: #ffffff; border-radius: 0; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
-        <!-- Header -->
-        <table width="100%" cellpadding="0" cellspacing="0" style="background: #ffffff; border-bottom: 2px solid #e0e0e0;">
+        <!-- Header - banner flush, line attached -->
+        <table width="100%" cellpadding="0" cellspacing="0" style="background: #ffffff;">
             <tr>
-                <td style="padding: 2px 2px; width: 100%;">
+                <td style="padding: 0; width: 100%;">
                     @if(config('constants.EMAILER_HEADER_LOGO'))
-                    <img src="{{ config('constants.EMAILER_HEADER_LOGO') }}" alt="{{ config('constants.EVENT_NAME') }}" style="max-width: 100%; height: auto; max-height: 100px;">
+                    <div style="border-bottom: 2px solid #e0e0e0;">
+                        <img src="{{ config('constants.EMAILER_HEADER_LOGO') }}" alt="{{ config('constants.EVENT_NAME') }}" style="max-width: 100%; width: 100%; height: auto; max-height: 100px; display: block; border: 0; vertical-align: bottom;">
+                    </div>
                     @endif
                 </td>
             </tr>

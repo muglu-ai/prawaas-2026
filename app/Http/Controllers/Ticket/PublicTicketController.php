@@ -802,8 +802,8 @@ class PublicTicketController extends Controller
             }
         }
 
-        // Load registration category
-        $registrationCategory = TicketRegistrationCategory::find($registrationData['registration_category_id']);
+        // Load registration category (optional - may not be set for all flows)
+        $registrationCategory = TicketRegistrationCategory::find($registrationData['registration_category_id'] ?? null);
 
         return view('tickets.public.preview', compact(
             'event',

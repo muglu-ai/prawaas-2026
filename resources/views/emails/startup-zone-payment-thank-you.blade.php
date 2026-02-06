@@ -13,12 +13,11 @@
                     
                     <!-- Header -->
                     <tr>
-                        <td style="padding: 30px 30px 20px; background-color: #ffffff; border-radius: 8px 8px 0 0; border-bottom: 2px solid #1a237e;">
-                            <div style="margin-bottom: 20px;">
-                                <img src="{{ config('constants.EMAILER_HEADER_LOGO') }}" alt="{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}" style="max-width: 100%; width: 100%; height: auto; display: block; border: 0;">
+                        <td style="padding: 0; background-color: #ffffff; border-radius: 8px 8px 0 0;">
+                            <div style="border-bottom: 2px solid #1a237e;">
+                                <img src="{{ config('constants.EMAILER_HEADER_LOGO') }}" alt="{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}" style="max-width: 100%; width: 100%; height: auto; display: block; border: 0; vertical-align: bottom;">
                             </div>
-                            
-                            <div style="text-align: center; padding-top: 15px; border-top: 1px solid #e9ecef;">
+                            <div style="text-align: center; padding: 15px 30px; border-top: 1px solid #e9ecef;">
                                 <h1 style="margin: 0; color: #1a237e; font-size: 24px; font-weight: bold;">{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}</h1>
                                 <p style="margin: 10px 0 0; color: #666666; font-size: 16px; font-weight: 600;">Payment Confirmation - Startup Exhibition</p>
                             </div>

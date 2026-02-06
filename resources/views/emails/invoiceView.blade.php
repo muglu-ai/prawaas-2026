@@ -14,15 +14,13 @@
        style="max-width: 600px; margin: 3px auto; background-color: #ffffff; border-collapse: collapse; box-shadow: 0 2px 5px rgba(0,0,0,0.1); style="
        margin-top: 5px;
 ">
-<!-- Header with Logo -->
+<!-- Header with Logo - flush, line attached -->
 <tr>
-    <td align="center" style="padding: 10px 0; background-color: #ffffff; border-bottom: 1px solid #eeeeee;">
+    <td style="padding: 0; background-color: #ffffff;">
+        <div style="border-bottom: 1px solid #eeeeee;">
+            <img src="{{ config('constants.EMAILER_HEADER_LOGO') }}" alt="{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}" style="max-width: 100%; width: 100%; height: auto; display: block; border: 0; vertical-align: bottom;">
+        </div>
         <table border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto;">
-            <tr>
-                <td colspan="5" style="text-align: center;">
-                    <img src="{{ config('constants.EMAILER_HEADER_LOGO') }}" alt="{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}" style="max-width: 100%; width: 100%; height: auto; display: block; border: 0;">
-                </td>
-            </tr>
             <tr>
                 <td style="padding: 0 5px;">
                     <a href="{{ config('constants.SOCIAL_LINKS.facebook') }}" target="_blank">

@@ -9,11 +9,9 @@
 <body style="background-color: #f5f5f5; font-family: 'Inter', Arial, sans-serif; margin: 0; padding: 0;">
 
 <div style="max-width: 700px; margin: 40px auto; background-color: #ffffff; border: 1px solid #e5e5e5; padding: 40px; border-radius: 8px; text-align: center;">
-    <!-- Email Header -->
-    <div style="margin-bottom: 20px;">
-        <img src="https://interlinx.in/logo.svg" alt="{{ config('constants')['EVENT_NAME'] }} {{ config('constants')['EVENT_YEAR'] }}" style="max-width: 150px;">
-        <br>
-        <span style="font-size:14px; color:#333;">{{ config('constants')['EVENT_NAME'] }} {{ config('constants')['EVENT_YEAR'] }}</span>
+    <!-- Email Header - flush, no gap -->
+    <div>
+        <img src="{{ config('constants.EMAILER_HEADER_LOGO') }}" alt="{{ config('constants.EVENT_NAME') }} {{ config('constants.EVENT_YEAR') }}" style="max-width: 100%; width: 100%; height: auto; display: block; border: 0; vertical-align: bottom;">
     </div>
 
     <!-- Email Body -->
